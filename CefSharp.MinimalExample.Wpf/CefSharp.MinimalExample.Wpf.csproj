@@ -129,9 +129,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="chromium-256.ico" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\CefSharp.Core.3.29.0-pre0\build\CefSharp.Core.targets" Condition="Exists('..\packages\CefSharp.Core.3.29.0-pre0\build\CefSharp.Core.targets')" />
