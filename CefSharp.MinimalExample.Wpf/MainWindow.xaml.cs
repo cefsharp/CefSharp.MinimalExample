@@ -1,7 +1,4 @@
-﻿using CefSharp.MinimalExample.Wpf.Mvvm;
-using CefSharp.Wpf;
-using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 
 namespace CefSharp.MinimalExample.Wpf
 {
