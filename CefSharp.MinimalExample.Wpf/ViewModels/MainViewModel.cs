@@ -3,7 +3,7 @@ using CefSharp.Wpf;
 using System.ComponentModel;
 using System.Windows;
 
-namespace CefSharp.MinimalExample.Wpf.Views.Main
+namespace CefSharp.MinimalExample.Wpf.ViewModels
 {
     public class MainViewModel
     {
