@@ -12,7 +12,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <cefSharp:WebView Grid.Row="0"
+        <cefSharp:ChromiumWebBrowser Grid.Row="0"
                           Address="http://www.google.com"
                           WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}"
                           Title="{Binding Title, Mode=TwoWay}" />
