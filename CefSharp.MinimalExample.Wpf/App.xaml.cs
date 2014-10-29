@@ -6,12 +6,7 @@ namespace CefSharp.MinimalExample.Wpf
     {
         public App()
         {
-            var settings = new CefSettings
-            {
-                BrowserSubprocessPath = "CefSharp.BrowserSubprocess.exe"
-            };
-
-            Cef.Initialize(settings);
+            Cef.Initialize(new CefSettings());
         }
     }
 }

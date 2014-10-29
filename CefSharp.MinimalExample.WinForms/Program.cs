@@ -12,12 +12,7 @@ namespace CefSharp.MinimalExample.WinForms
         [STAThread]
         public static void Main()
         {
-            var settings = new CefSettings
-            {
-                BrowserSubprocessPath = "CefSharp.BrowserSubprocess.exe"
-            };
-
-            Cef.Initialize(settings);
+            Cef.Initialize(new CefSettings());
 
             var browser = new BrowserForm();
             Application.Run(browser);
