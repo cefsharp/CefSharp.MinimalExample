@@ -24,14 +24,11 @@ namespace CefSharp.MinimalExample.OffScreen
             Cef.Initialize(new CefSettings());
 
             // Create the offscreen Chromium browser.
-            browser = new ChromiumWebBrowser();
+            browser = new ChromiumWebBrowser(testUrl);
 
             // An event that is fired when the first page is finished loading.
             // This returns to us from another thread.
             browser.FrameLoadEnd += BrowserFrameLoadEnd;
-
-            // Start loading the test URL in Chrome's thread.
-            browser.Load(testUrl);
 
             // We have to wait for something, otherwise the process will exit too soon.
             Console.ReadKey();
