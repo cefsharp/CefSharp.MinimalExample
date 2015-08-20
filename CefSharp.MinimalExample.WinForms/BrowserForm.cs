@@ -26,7 +26,7 @@ namespace CefSharp.MinimalExample.WinForms
             };
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
-            browser.NavStateChanged += OnBrowserNavStateChanged;
+            browser.LoadingStateChanged += OnLoadingStateChanged;
             browser.ConsoleMessage += OnBrowserConsoleMessage;
             browser.StatusMessage += OnBrowserStatusMessage;
             browser.TitleChanged += OnBrowserTitleChanged;
@@ -47,7 +47,7 @@ namespace CefSharp.MinimalExample.WinForms
             this.InvokeOnUiThreadIfRequired(() => statusLabel.Text = args.Value);
         }
 
-        private void OnBrowserNavStateChanged(object sender, NavStateChangedEventArgs args)
+        private void OnLoadingStateChanged(object sender, LoadingStateChangedEventArgs args)
         {
             SetCanGoBack(args.CanGoBack);
             SetCanGoForward(args.CanGoForward);

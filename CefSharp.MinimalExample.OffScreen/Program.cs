@@ -42,7 +42,7 @@ namespace CefSharp.MinimalExample.OffScreen
         {
             // Check to ensure it is the main frame which has finished loading
             // (rather than an iframe within the main frame).
-            if (e.IsMainFrame)
+            if (e.Frame.IsMain)
             {
                 // Remove the load event handler, because we only want one snapshot of the initial page.
                 browser.FrameLoadEnd -= BrowserFrameLoadEnd;
