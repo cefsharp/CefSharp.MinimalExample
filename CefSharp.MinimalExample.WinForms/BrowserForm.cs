@@ -24,6 +24,7 @@ namespace CefSharp.MinimalExample.WinForms
             {
                 Dock = DockStyle.Fill,
             };
+            browser.RegisterJsObject("jsBind", new JSBinding());
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
             browser.LoadingStateChanged += OnLoadingStateChanged;
@@ -149,5 +150,9 @@ namespace CefSharp.MinimalExample.WinForms
                 browser.Load(url);
             }
         }
+    }
+    public class JSBinding
+    {
+
     }
 }
