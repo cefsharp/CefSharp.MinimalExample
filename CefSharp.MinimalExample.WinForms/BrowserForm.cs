@@ -113,8 +113,8 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void ExitMenuItemClick(object sender, EventArgs e)
         {
-            browser.Dispose();
-            Cef.Shutdown();
+            //browser.Dispose();
+            //Cef.Shutdown();
             Close();
         }
 
