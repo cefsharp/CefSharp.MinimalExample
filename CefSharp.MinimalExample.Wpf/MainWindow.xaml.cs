@@ -8,5 +8,12 @@ namespace CefSharp.MinimalExample.Wpf
         {
             InitializeComponent();
         }
+
+        private void CloseMenuItemOnClick(object sender, RoutedEventArgs e)
+        {
+            viewModel.DisposeBrowserAndShutdown();
+
+            Close();
+        }
     }
 }

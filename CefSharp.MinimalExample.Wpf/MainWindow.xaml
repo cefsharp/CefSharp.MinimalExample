@@ -4,5 +4,12 @@
         xmlns:main="clr-namespace:CefSharp.MinimalExample.Wpf.Views"
         Title="{Binding WebBrowser.Title}"
         WindowState="Maximized">
-    <main:MainView/>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Close" Click="CloseMenuItemOnClick"/>
+            </MenuItem>
+        </Menu>
+        <main:MainView x:Name="viewModel"/>
+    </DockPanel>
 </Window>
