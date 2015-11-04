@@ -22,7 +22,8 @@ namespace CefSharp.MinimalExample.OffScreen
             Console.WriteLine("You may see Chromium debugging output, please wait...");
             Console.WriteLine();
 
-            Cef.Initialize(new CefSettings());
+            //Perform dependency check to make sure all relevant resources are in our output directory.
+            Cef.Initialize(new CefSettings(), shutdownOnProcessExit: true, performDependencyCheck: true);
 
             // Create the offscreen Chromium browser.
             browser = new ChromiumWebBrowser(testUrl);

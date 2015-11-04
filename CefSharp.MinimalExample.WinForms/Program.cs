@@ -12,7 +12,8 @@ namespace CefSharp.MinimalExample.WinForms
         [STAThread]
         public static void Main()
         {
-            Cef.Initialize(new CefSettings());
+            //Perform dependency check to make sure all relevant resources are in our output directory.
+            Cef.Initialize(new CefSettings(), shutdownOnProcessExit:true, performDependencyCheck:true);
 
             var browser = new BrowserForm();
             Application.Run(browser);
