@@ -7,25 +7,9 @@
     <Window.InputBindings>
         <KeyBinding Modifiers="Control" Key="U" Command="{Binding Path=ViewSourceCommand, ElementName=Browser}"/>
     </Window.InputBindings>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <cefSharp:ChromiumWebBrowser Grid.Row="0"
+    <cefSharp:ChromiumWebBrowser
                           x:Name="Browser"
                           Address="http://www.google.com"
                           WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}"
                           Title="{Binding Title, Mode=TwoWay}" />
-        <StatusBar Grid.Row="1">
-            <ProgressBar HorizontalAlignment="Right"
-                         IsIndeterminate="{Binding WebBrowser.IsLoading}"
-                         Width="100"
-                         Height="16"
-                         Margin="3" />
-            <Separator />
-            <!-- TODO: Could show hover link URL here -->
-            <TextBlock />
-        </StatusBar>
-    </Grid>
 </Window>
