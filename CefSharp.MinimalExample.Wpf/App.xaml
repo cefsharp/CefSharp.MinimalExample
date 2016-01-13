@@ -1,8 +1,9 @@
 ﻿<Application x:Class="CefSharp.MinimalExample.Wpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:binding="clr-namespace:CefSharp.MinimalExample.Wpf.Binding"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <binding:TitleConverter x:Key="TitleConverter"/>
     </Application.Resources>
 </Application>
