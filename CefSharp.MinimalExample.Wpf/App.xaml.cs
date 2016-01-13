@@ -7,7 +7,9 @@ namespace CefSharp.MinimalExample.Wpf
         public App()
         {
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(new CefSettings(), shutdownOnProcessExit: true, performDependencyCheck: true);
+            var settings = new CefSettings();
+            settings.EnableInternalPdfViewerOffScreen();
+            Cef.Initialize(settings, shutdownOnProcessExit: true, performDependencyCheck: true);
         }
     }
 }
