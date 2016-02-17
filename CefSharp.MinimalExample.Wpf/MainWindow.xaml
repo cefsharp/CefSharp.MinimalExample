@@ -8,6 +8,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <wpf:ChromiumWebBrowser Grid.Row="0"
                           x:Name="Browser"
@@ -22,5 +23,6 @@
             <!-- TODO: Could show hover link URL here -->
             <TextBlock />
         </StatusBar>
+        <Button x:Name="EnvironmentExit" Grid.Row="1" Click="EnvironmentExitOnClick" Content="EnvironmentExit"/>
     </Grid>
 </Window>
