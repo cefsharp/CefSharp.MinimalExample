@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace CefSharp.MinimalExample.Wpf
 {
@@ -7,6 +8,22 @@ namespace CefSharp.MinimalExample.Wpf
         public MainWindow()
         {
             InitializeComponent();
+            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+        }
+
+        void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                Browser.Dispose();
+                Cef.Shutdown();
+            }));
+
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

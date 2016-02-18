@@ -21,6 +21,7 @@
             <Separator />
             <!-- TODO: Could show hover link URL here -->
             <TextBlock />
+            <Button Click="ButtonBase_OnClick">Environment.Exit(0)</Button>
         </StatusBar>
     </Grid>
 </Window>
