@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\CefSharp.Common.49.0.0-pre02\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.49.0.0-pre02\build\CefSharp.Common.props')" />
-  <Import Project="..\packages\CefSharp.OffScreen.49.0.0-pre02\build\CefSharp.OffScreen.props" Condition="Exists('..\packages\CefSharp.OffScreen.49.0.0-pre02\build\CefSharp.OffScreen.props')" />
+  <Import Project="..\packages\CefSharp.Common.49.0.0\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.49.0.0\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\CefSharp.OffScreen.49.0.0\build\CefSharp.OffScreen.props" Condition="Exists('..\packages\CefSharp.OffScreen.49.0.0\build\CefSharp.OffScreen.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -15,7 +15,7 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <NuGetPackageImportStamp>08f541b7</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>9473b9f0</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -84,5 +84,5 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x86.3.2623.1396\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2623.1396\build\cef.redist.x86.targets')" />
   <Import Project="..\packages\cef.redist.x64.3.2623.1396\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2623.1396\build\cef.redist.x64.targets')" />
-  <Import Project="..\packages\CefSharp.Common.49.0.0-pre02\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.49.0.0-pre02\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.Common.49.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.49.0.0\build\CefSharp.Common.targets')" />
 </Project>
