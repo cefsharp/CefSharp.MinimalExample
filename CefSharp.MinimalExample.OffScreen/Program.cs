@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using CefSharp.OffScreen;
+using System.Threading.Tasks;
 
 namespace CefSharp.MinimalExample.OffScreen
 {
@@ -90,7 +91,7 @@ namespace CefSharp.MinimalExample.OffScreen
                         Process.Start(screenshotPath);
 
                         Console.WriteLine("Image viewer launched.  Press any key to exit.");			
-                    });
+                    }, TaskScheduler.Default);
                 });
             }
         }
