@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using CefSharp.OffScreen;
+using System.Threading.Tasks;
 
 namespace CefSharp.MinimalExample.OffScreen
 {
@@ -23,11 +24,17 @@ namespace CefSharp.MinimalExample.OffScreen
             Console.WriteLine();
 
             var settings = new CefSettings();
-            // Disable GPU in WPF and Offscreen examples until #1634 has been resolved
-            settings.CefCommandLineArgs.Add("disable-gpu", "1");
+
+            var osVersion = Environment.OSVersion;
+            //Disable GPU for Windows 7
+            if (osVersion.Version.Major == 6 && osVersion.Version.Minor == 1)
+            {
+                // Disable GPU in WPF and Offscreen examples until #1634 has been resolved
+                settings.CefCommandLineArgs.Add("disable-gpu", "1");
+            }
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, shutdownOnProcessExit: true, performDependencyCheck: true);
+            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: true);
 
             // Create the offscreen Chromium browser.
             browser = new ChromiumWebBrowser(testUrl);
@@ -84,7 +91,7 @@ namespace CefSharp.MinimalExample.OffScreen
                         Process.Start(screenshotPath);
 
                         Console.WriteLine("Image viewer launched.  Press any key to exit.");			
-                    });
+                    }, TaskScheduler.Default);
                 });
             }
         }
