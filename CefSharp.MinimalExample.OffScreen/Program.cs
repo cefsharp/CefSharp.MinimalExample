@@ -34,7 +34,7 @@ namespace CefSharp.MinimalExample.OffScreen
             }
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: true);
+            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler:null);
 
             // Create the offscreen Chromium browser.
             browser = new ChromiumWebBrowser(testUrl);

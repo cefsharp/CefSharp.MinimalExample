@@ -19,7 +19,7 @@ namespace CefSharp.MinimalExample.Wpf
                 settings.CefCommandLineArgs.Add("disable-gpu", "1");
             }
 
-            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: true);
+            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
         }
     }
 }
