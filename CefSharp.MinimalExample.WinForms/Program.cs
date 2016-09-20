@@ -12,6 +12,9 @@ namespace CefSharp.MinimalExample.WinForms
         [STAThread]
         public static void Main()
         {
+            //For Windows 7 and above, best to include relevant app.manifest entries as well
+            Cef.EnableHighDPISupport();
+
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(new CefSettings(), shutdownOnProcessExit:false, performDependencyCheck:true);
 
