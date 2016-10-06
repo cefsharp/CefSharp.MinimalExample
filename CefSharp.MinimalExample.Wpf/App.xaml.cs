@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace CefSharp.MinimalExample.Wpf
 {
@@ -9,6 +10,7 @@ namespace CefSharp.MinimalExample.Wpf
         {
             //Perform dependency check to make sure all relevant resources are in our output directory.
             var settings = new CefSettings();
+            settings.MultiThreadedMessageLoop = false;
             settings.EnableInternalPdfViewerOffScreen();
 
             var osVersion = Environment.OSVersion;
@@ -20,6 +22,20 @@ namespace CefSharp.MinimalExample.Wpf
             }
 
             Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: true);
+        }
+
+        protected override void OnStartup(StartupEventArgs startupEventArgs)
+        {
+            base.OnStartup(startupEventArgs);
+
+            var timer = new DispatcherTimer
+            (
+                TimeSpan.FromMilliseconds(1000 / 60),
+                DispatcherPriority.Render,
+                (s, e) => Cef.DoMessageLoopWork(),
+                Dispatcher
+            );
+            timer.Start();
         }
     }
 }
