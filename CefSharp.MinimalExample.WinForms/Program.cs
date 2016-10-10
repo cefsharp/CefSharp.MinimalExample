@@ -16,7 +16,7 @@ namespace CefSharp.MinimalExample.WinForms
             Cef.EnableHighDPISupport();
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(new CefSettings(), shutdownOnProcessExit:false, performDependencyCheck:true);
+            Cef.Initialize(new CefSettings(), performDependencyCheck: true, browserProcessHandler: null);
 
             var browser = new BrowserForm();
             Application.Run(browser);
