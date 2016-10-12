@@ -56,13 +56,6 @@ namespace CefSharp.MinimalExample.Wpf
 
         void IBrowserProcessHandler.OnScheduleMessagePumpWork(long delay)
         {
-            //If the delay is greater than the Maximum then use MaxTimerDelay
-            //instead - we do this to achieve a minimum number of FPS
-            if(delay > MaxTimerDelay)
-            {
-                delay = MaxTimerDelay;
-            }
-
             //When delay <= 0 we'll execute Cef.DoMessageLoopWork immediately
             // if it's greater than we'll just let the Timer which fires 30 times per second
             // care of the call
