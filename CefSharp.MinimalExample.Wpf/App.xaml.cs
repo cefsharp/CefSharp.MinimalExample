@@ -11,7 +11,6 @@ namespace CefSharp.MinimalExample.Wpf
             //Perform dependency check to make sure all relevant resources are in our output directory.
             var settings = new CefSettings();
             settings.MultiThreadedMessageLoop = false;
-            settings.EnableInternalPdfViewerOffScreen();
 
             var osVersion = Environment.OSVersion;
             //Disable GPU for Windows 7
@@ -21,13 +20,14 @@ namespace CefSharp.MinimalExample.Wpf
                 settings.CefCommandLineArgs.Add("disable-gpu", "1");
             }
 
-            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: true);
+            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
         }
 
         protected override void OnStartup(StartupEventArgs startupEventArgs)
         {
             base.OnStartup(startupEventArgs);
 
+            //Run DoMessageLoopWork 60 times per second - this is the simplest message loop integration
             var timer = new DispatcherTimer
             (
                 TimeSpan.FromMilliseconds(1000 / 60),
