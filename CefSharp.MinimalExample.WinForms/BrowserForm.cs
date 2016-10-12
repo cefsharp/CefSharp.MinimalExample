@@ -29,7 +29,15 @@ namespace CefSharp.MinimalExample.WinForms
             {
                 Dock = DockStyle.Fill,
             };
-            browser.PreviewKeyDown += BrowserPreviewKeyDown;
+
+            var cefSharpVersion = Version.Parse(Cef.CefSharpVersion);
+
+            //Changes have been made in what will be the 55 release that mean this will
+            //no longer be required.
+            if (cefSharpVersion.Major <= 53)
+            { 
+                browser.PreviewKeyDown += BrowserPreviewKeyDown;
+            }
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
             browser.LoadingStateChanged += OnLoadingStateChanged;
