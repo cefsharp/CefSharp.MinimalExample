@@ -11,7 +11,7 @@ namespace CefSharp.MinimalExample.WinForms
 {
     public partial class BrowserForm : Form
     {
-        private readonly ChromiumWebBrowser browser;
+        private ChromiumWebBrowser browser;
 
         public BrowserForm()
         {
@@ -20,6 +20,11 @@ namespace CefSharp.MinimalExample.WinForms
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
+            Load += BrowserFormLoad;
+        }
+
+        private void BrowserFormLoad(object sender, EventArgs e)
+        {
             browser = new ChromiumWebBrowser("www.google.com")
             {
                 Dock = DockStyle.Fill,
