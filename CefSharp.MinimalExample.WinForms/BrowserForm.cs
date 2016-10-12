@@ -29,6 +29,7 @@ namespace CefSharp.MinimalExample.WinForms
             {
                 Dock = DockStyle.Fill,
             };
+            browser.PreviewKeyDown += BrowserPreviewKeyDown;
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
             browser.LoadingStateChanged += OnLoadingStateChanged;
@@ -40,6 +41,33 @@ namespace CefSharp.MinimalExample.WinForms
             var bitness = Environment.Is64BitProcess ? "x64" : "x86";
             var version = String.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}, Environment: {3}", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion, bitness);
             DisplayOutput(version);
+        }
+
+        private void BrowserPreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            //This code block is only called/required when CEF is running in the
+            //same message loop as the WinForms UI (CefSettings.MultiThreadedMessageLoop = false)
+            //Without this code, arrows and tab won't be processed
+            switch (e.KeyData)
+            {
+                case Keys.Right:
+                case Keys.Left:
+                case Keys.Up:
+                case Keys.Down:
+                case Keys.Tab:
+                {
+                    e.IsInputKey = true;
+                    break;
+                }
+                case Keys.Shift | Keys.Right:
+                case Keys.Shift | Keys.Left:
+                case Keys.Shift | Keys.Up:
+                case Keys.Shift | Keys.Down:
+                { 
+                    e.IsInputKey = true;
+                    break;
+                }
+            }            
         }
 
         private void OnBrowserConsoleMessage(object sender, ConsoleMessageEventArgs args)
