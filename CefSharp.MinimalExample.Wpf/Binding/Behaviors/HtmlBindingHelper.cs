@@ -25,12 +25,14 @@ namespace CefSharp.MinimalExample.Wpf.Binding.Behaviors
         
         private static void OnHtmlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue == null || string.IsNullOrWhiteSpace((string)e.NewValue))
+            string htmlText = e.NewValue as string;
+
+            if (string.IsNullOrWhiteSpace(htmlText))
             {
-                return;
+                htmlText = string.Empty;
             }
             
-            ((ChromiumWebBrowser)d).LoadHtml((string)e.NewValue, "http://test/page");
+            ((ChromiumWebBrowser)d).LoadHtml(htmlText, "http://cefsharp/loadHtml");
         }
     }
 }
