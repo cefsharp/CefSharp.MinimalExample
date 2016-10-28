@@ -40,8 +40,8 @@ namespace CefSharp.MinimalExample.Wpf.Binding.Behaviors
             {
                 return;
             }
-
-            (d as ChromiumWebBrowser)?.LoadHtml((string)e.NewValue, "http://test/page");
+            
+            (d as LoadHtmlBehavior)?.AssociatedObject.LoadHtml((string)e.NewValue, "about:blank");
         }
     }
 }
