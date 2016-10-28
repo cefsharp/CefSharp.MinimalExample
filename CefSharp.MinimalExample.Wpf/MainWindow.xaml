@@ -35,7 +35,7 @@
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
             <StatusBarItem>
-                <Button Content="View HTML" Command="{Binding ViewHtmlCommand}" Padding="3,0"/>                
+                <Button Content="View HTML" Command="{Binding ViewHtmlCommand}" Padding="3,0"/>
             </StatusBarItem>
             <Separator Grid.Column="1"/>
             <StatusBarItem Grid.Column="2">
