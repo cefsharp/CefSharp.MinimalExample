@@ -41,7 +41,7 @@ namespace CefSharp.MinimalExample.Wpf.Binding.Behaviors
                 return;
             }
             
-            ((LoadHtmlBehavior)d).AssociatedObject.LoadHtml((string)e.NewValue, "about:blank");
+            ((LoadHtmlBehavior)d).AssociatedObject.LoadHtml((string)e.NewValue, "http://test/page");
         }
     }
 }
