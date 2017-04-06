@@ -2,7 +2,6 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converter="clr-namespace:CefSharp.MinimalExample.Wpf.Converter"
-             xmlns:behaviours="clr-namespace:CefSharp.MinimalExample.Wpf.Behaviours"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <converter:TitleConverter x:Key="TitleConverter"/>
