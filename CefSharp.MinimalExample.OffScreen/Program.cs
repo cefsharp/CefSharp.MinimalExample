@@ -8,6 +8,8 @@ using System.IO;
 using System.Threading;
 using CefSharp.OffScreen;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using System.Reflection;
 
 namespace CefSharp.MinimalExample.OffScreen
 {
@@ -15,7 +17,16 @@ namespace CefSharp.MinimalExample.OffScreen
     {
         private static ChromiumWebBrowser browser;
 
-        public static void Main(string[] args)
+        [STAThread]
+        public static void Main()
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += Resolver;
+
+            LoadApp();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static void LoadApp()
         {
             const string testUrl = "https://www.google.com/";
 
@@ -25,16 +36,12 @@ namespace CefSharp.MinimalExample.OffScreen
 
             var settings = new CefSettings();
 
-            var osVersion = Environment.OSVersion;
-            //Disable GPU for Windows 7
-            if (osVersion.Version.Major == 6 && osVersion.Version.Minor == 1)
-            {
-                // Disable GPU in WPF and Offscreen examples until #1634 has been resolved
-                settings.CefCommandLineArgs.Add("disable-gpu", "1");
-            }
+            settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
+                                                   Environment.Is64BitProcess ? "x64" : "x86",
+                                                   "CefSharp.BrowserSubprocess.exe");
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: true);
+            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: false);
 
             // Create the offscreen Chromium browser.
             browser = new ChromiumWebBrowser(testUrl);
@@ -94,6 +101,24 @@ namespace CefSharp.MinimalExample.OffScreen
                     }, TaskScheduler.Default);
                 });
             }
+        }
+
+        // Will attempt to load missing assembly from either x86 or x64 subdir
+        private static Assembly Resolver(object sender, ResolveEventArgs args)
+        {
+            if (args.Name.StartsWith("CefSharp"))
+            {
+                string assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
+                string archSpecificPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
+                                                       Environment.Is64BitProcess ? "x64" : "x86",
+                                                       assemblyName);
+
+                return File.Exists(archSpecificPath)
+                           ? Assembly.LoadFile(archSpecificPath)
+                           : null;
+            }
+
+            return null;
         }
     }
 }
