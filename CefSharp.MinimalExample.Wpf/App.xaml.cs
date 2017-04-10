@@ -27,7 +27,7 @@ namespace CefSharp.MinimalExample.Wpf
                                                    Environment.Is64BitProcess ? "x64" : "x86",
                                                    "CefSharp.BrowserSubprocess.exe");
 
-            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: false);
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler:null);
         }
 
         // Will attempt to load missing assembly from either x86 or x64 subdir

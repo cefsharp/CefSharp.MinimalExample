@@ -30,7 +30,7 @@ namespace CefSharp.MinimalExample.WinForms
                                                    Environment.Is64BitProcess ? "x64" : "x86",
                                                    "CefSharp.BrowserSubprocess.exe");
 
-            Cef.Initialize(settings, shutdownOnProcessExit: false, performDependencyCheck: false);
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
 
             var browser = new BrowserForm();
             Application.Run(browser);

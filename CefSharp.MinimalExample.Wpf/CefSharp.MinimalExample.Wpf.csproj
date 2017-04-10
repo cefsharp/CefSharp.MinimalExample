@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\CefSharp.Common.51.0.0\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.51.0.0\build\CefSharp.Common.props')" />
-  <Import Project="..\packages\CefSharp.Wpf.51.0.0\build\CefSharp.Wpf.props" Condition="Exists('..\packages\CefSharp.Wpf.51.0.0\build\CefSharp.Wpf.props')" />
+  <Import Project="..\packages\CefSharp.Common.57.0.0-pre01\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.57.0.0-pre01\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\CefSharp.Wpf.57.0.0-pre01\build\CefSharp.Wpf.props" Condition="Exists('..\packages\CefSharp.Wpf.57.0.0-pre01\build\CefSharp.Wpf.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -18,7 +18,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <NuGetPackageImportStamp>29f2d518</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>d397b9ff</NuGetPackageImportStamp>
     <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -155,10 +155,10 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\cef.redist.x86.3.2704.1432\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2704.1432\build\cef.redist.x86.targets')" />
-  <Import Project="..\packages\cef.redist.x64.3.2704.1432\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2704.1432\build\cef.redist.x64.targets')" />
-  <Import Project="..\packages\CefSharp.Wpf.51.0.0\build\CefSharp.Wpf.targets" Condition="Exists('..\packages\CefSharp.Wpf.51.0.0\build\CefSharp.Wpf.targets')" />
-  <Import Project="..\packages\CefSharp.Common.51.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.51.0.0\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.Wpf.57.0.0-pre01\build\CefSharp.Wpf.targets" Condition="Exists('..\packages\CefSharp.Wpf.57.0.0-pre01\build\CefSharp.Wpf.targets')" />
+  <Import Project="..\packages\cef.redist.x86.3.2987.1597\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2987.1597\build\cef.redist.x86.targets')" />
+  <Import Project="..\packages\CefSharp.Common.57.0.0-pre01\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.57.0.0-pre01\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\cef.redist.x64.3.2987.1597\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2987.1597\build\cef.redist.x64.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
