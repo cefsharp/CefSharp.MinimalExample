@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace CefSharp.MinimalExample.Wpf.Binding
+namespace CefSharp.MinimalExample.Wpf.Converter
 {
     public class TitleConverter : IValueConverter
     {
