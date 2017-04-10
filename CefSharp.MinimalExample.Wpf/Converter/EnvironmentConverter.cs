@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows.Data;
 
 namespace CefSharp.MinimalExample.Wpf.Converter
 {
-    class EnvironmentConverter : System.Windows.Data.IValueConverter
+    public class EnvironmentConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -12,7 +13,7 @@ namespace CefSharp.MinimalExample.Wpf.Converter
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return System.Windows.Data.Binding.DoNothing;
+            return Binding.DoNothing;
         }
     }
 }

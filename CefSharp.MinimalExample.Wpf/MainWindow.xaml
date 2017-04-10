@@ -7,9 +7,6 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
         Title="{Binding Path=Title, ElementName=Browser, Converter={StaticResource TitleConverter}}"
         WindowState="Maximized">
-    <Window.Resources>
-        <cef:Cef x:Key="Cef" />
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -74,7 +71,7 @@
             <Separator Grid.Column="3" />
             <StatusBarItem Grid.Column="4">
                 <TextBlock HorizontalAlignment="Right" TextAlignment="Right" Grid.Column="3" VerticalAlignment="Center">
-                Chromium: <Run Text="{Binding ChromiumVersion, Source={StaticResource Cef}, Mode=OneTime}" />, CEF: <Run Text="{Binding CefVersion, Source={StaticResource Cef}, Mode=OneTime}" />, CefSharp: <Run Text="{Binding CefSharpVersion, Source={StaticResource Cef}, Mode=OneTime}"/>, Environment: <Run Text="{Binding Converter={StaticResource EnvironmentConverter}, Mode=OneTime}"/>
+                Chromium: <Run Text="{Binding Source={x:Static cef:Cef.ChromiumVersion}, Mode=OneTime}" />, CEF: <Run Text="{Binding Source={x:Static cef:Cef.CefVersion}, Mode=OneTime}" />, CefSharp: <Run Text="{Binding Source={x:Static cef:Cef.CefSharpVersion}, Mode=OneTime}"/>, Environment: <Run Text="{Binding Converter={StaticResource EnvironmentConverter}, Mode=OneTime}"/>
                 </TextBlock>
             </StatusBarItem>
         </StatusBar>
