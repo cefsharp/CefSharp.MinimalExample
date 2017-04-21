@@ -72,20 +72,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CefSharp.Core\CefSharp.Core.vcxproj">
-      <Project>{7b495581-2271-4f41-9476-acb86e8c864f}</Project>
-      <Name>CefSharp.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CefSharp.OffScreen\CefSharp.OffScreen.csproj">
-      <Project>{483b158d-f57d-49d9-9046-31e6a73f8a53}</Project>
-      <Name>CefSharp.OffScreen</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CefSharp\CefSharp.csproj">
-      <Project>{a55848cc-10e7-40cb-addb-04740b16dd43}</Project>
-      <Name>CefSharp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
