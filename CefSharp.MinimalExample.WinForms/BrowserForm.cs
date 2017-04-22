@@ -11,16 +11,18 @@ namespace CefSharp.MinimalExample.WinForms
 {
     public partial class BrowserForm : Form
     {
+        public event EventHandler<AddressChangedEventArgs> AddressChanged;
+
         private readonly ChromiumWebBrowser browser;
 
-        public BrowserForm()
+        public BrowserForm( string url )
         {
             InitializeComponent();
 
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser("www.google.com")
+            browser = new ChromiumWebBrowser(url)
             {
                 Dock = DockStyle.Fill,
             };
@@ -63,6 +65,8 @@ namespace CefSharp.MinimalExample.WinForms
         private void OnBrowserAddressChanged(object sender, AddressChangedEventArgs args)
         {
             this.InvokeOnUiThreadIfRequired(() => urlTextBox.Text = args.Address);
+
+            AddressChanged?.Invoke( sender, args );
         }
 
         private void SetCanGoBack(bool canGoBack)
@@ -142,7 +146,7 @@ namespace CefSharp.MinimalExample.WinForms
             LoadUrl(urlTextBox.Text);
         }
 
-        private void LoadUrl(string url)
+        public void LoadUrl(string url)
         {
             if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
             {
