@@ -31,13 +31,13 @@
             </Grid.ColumnDefinitions>
             <Button Content="Back" Command="{Binding WebBrowser.BackCommand, ElementName=Browser}" Width="50"/>
             <Button Content="Forward" Command="{Binding WebBrowser.ForwardCommand, ElementName=Browser}" Grid.Column="1" Width="60"/>
-            <TextBox x:Name="txtBoxAddress" Text="{Binding Address, ElementName=Browser, FallbackValue=www.google.com}" Grid.Column="2" FontSize="12" BorderBrush="Gray" BorderThickness="1" />
+            <TextBox x:Name="txtBoxAddress" Text="{Binding Address, ElementName=Browser, UpdateSourceTrigger=LostFocus, Mode=TwoWay}" Grid.Column="2" FontSize="12" BorderBrush="Gray" BorderThickness="1" Keyboard.KeyDown="OnTxtBoxAddressKeyDown"/>
             <Button Content="Print..." Command="{Binding WebBrowser.PrintCommand, ElementName=Browser}" Grid.Column="3" Width="50" />
             <Button Content="View source" Command="{Binding WebBrowser.ViewSourceCommand, ElementName=Browser}" Grid.Column="4" Width="75" />
         </Grid>
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
             <wpf:ChromiumWebBrowser x:Name="Browser"
-                                    Address="{Binding Text, ElementName=txtBoxAddress}">
+                                    Address="www.google.com">
                 <i:Interaction.Behaviors>
                     <behaviours:HoverLinkBehaviour x:Name="HoverLinkBehaviour"/>
                 </i:Interaction.Behaviors>
