@@ -103,6 +103,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Behaviours\HoverLinkBehaviour.cs" />
+    <Compile Include="Behaviours\TextBoxBindingUpdateOnEnterBehaviour.cs" />
     <Compile Include="Converter\EnvironmentConverter.cs" />
     <Compile Include="Converter\TitleConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
