@@ -20,7 +20,7 @@ namespace CefSharp.MinimalExample.WinForms
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser()
+            browser = new ChromiumWebBrowser("www.google.com")
             {
                 Dock = DockStyle.Fill,
             };
@@ -31,19 +31,10 @@ namespace CefSharp.MinimalExample.WinForms
             browser.StatusMessage += OnBrowserStatusMessage;
             browser.TitleChanged += OnBrowserTitleChanged;
             browser.AddressChanged += OnBrowserAddressChanged;
-            browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
 
             var bitness = Environment.Is64BitProcess ? "x64" : "x86";
             var version = String.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}, Environment: {3}", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion, bitness);
             DisplayOutput(version);
-        }
-
-        private void OnIsBrowserInitializedChanged(object sender, IsBrowserInitializedChangedEventArgs e)
-        {
-            if(e.IsBrowserInitialized)
-            {
-                browser.Load("www.google.com");
-            }
         }
 
         private void OnBrowserConsoleMessage(object sender, ConsoleMessageEventArgs args)
