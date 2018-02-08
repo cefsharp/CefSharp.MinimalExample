@@ -149,5 +149,10 @@ namespace CefSharp.MinimalExample.WinForms
                 browser.Load(url);
             }
         }
+
+        private void ShowDevToolsMenuItemClick(object sender, EventArgs e)
+        {
+            browser.ShowDevTools();
+        }
     }
 }

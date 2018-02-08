@@ -8,13 +8,12 @@ namespace CefSharp.MinimalExample.Wpf.Converter
     {
         object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
             return "CefSharp.MinimalExample.Wpf - " + (value ?? "No Title Specified");
         }
 
         object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return System.Windows.Data.Binding.DoNothing;
+            return Binding.DoNothing;
         }
     }
 }

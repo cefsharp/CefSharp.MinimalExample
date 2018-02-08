@@ -6,5 +6,6 @@
     <Application.Resources>
         <converter:TitleConverter x:Key="TitleConverter"/>
         <converter:EnvironmentConverter x:Key="EnvironmentConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Application.Resources>
 </Application>

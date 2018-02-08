@@ -31,25 +31,35 @@
             </Grid.ColumnDefinitions>
             <Button Content="Back" Command="{Binding WebBrowser.BackCommand, ElementName=Browser}" Width="50"/>
             <Button Content="Forward" Command="{Binding WebBrowser.ForwardCommand, ElementName=Browser}" Grid.Column="1" Width="60"/>
-            <TextBox x:Name="txtBoxAddress" Text="{Binding Address, ElementName=Browser, FallbackValue=www.google.com}" Grid.Column="2" FontSize="12" BorderBrush="Gray" BorderThickness="1" />
+            <TextBox x:Name="txtBoxAddress" Text="{Binding Address, ElementName=Browser, FallbackValue=www.google.com}" Grid.Column="2" FontSize="12" BorderBrush="Gray" BorderThickness="1">
+                <i:Interaction.Behaviors>
+                    <behaviours:TextBoxBindingUpdateOnEnterBehaviour />
+                </i:Interaction.Behaviors>
+            </TextBox>
             <Button Content="Print..." Command="{Binding WebBrowser.PrintCommand, ElementName=Browser}" Grid.Column="3" Width="50" />
             <Button Content="View source" Command="{Binding WebBrowser.ViewSourceCommand, ElementName=Browser}" Grid.Column="4" Width="75" />
         </Grid>
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
             <wpf:ChromiumWebBrowser x:Name="Browser"
-                                    Address="{Binding Text, ElementName=txtBoxAddress}">
+                                    Address="www.google.com">
                 <i:Interaction.Behaviors>
                     <behaviours:HoverLinkBehaviour x:Name="HoverLinkBehaviour"/>
                 </i:Interaction.Behaviors>
             </wpf:ChromiumWebBrowser>
         </Border>
+        <ProgressBar IsIndeterminate="{Binding IsLoading, ElementName=Browser}"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Top"
+                     Width="Auto"
+                     Grid.Row="1"
+                     Height="2"
+                     Visibility="{Binding IsLoading, ElementName=Browser, Converter={StaticResource BooleanToVisibilityConverter}}"
+                     BorderThickness="0" />
         <StatusBar Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
             <StatusBar.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
@@ -57,19 +67,11 @@
                     </Grid>
                 </ItemsPanelTemplate>
             </StatusBar.ItemsPanel>
-            <StatusBarItem>
-                <ProgressBar HorizontalAlignment="Right"
-                             IsIndeterminate="{Binding IsLoading, ElementName=Browser}"
-                             Width="100"
-                             Height="16"
-                             Margin="3" />
+            <StatusBarItem Grid.Column="0">
+                <TextBlock Text="{Binding HoverLink, ElementName=HoverLinkBehaviour}" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
             </StatusBarItem>
             <Separator Grid.Column="1" />
             <StatusBarItem Grid.Column="2">
-                <TextBlock Text="{Binding HoverLink, ElementName=HoverLinkBehaviour}" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-            </StatusBarItem>
-            <Separator Grid.Column="3" />
-            <StatusBarItem Grid.Column="4">
                 <TextBlock HorizontalAlignment="Right" TextAlignment="Right" Grid.Column="3" VerticalAlignment="Center">
                 Chromium: <Run Text="{Binding Source={x:Static cef:Cef.ChromiumVersion}, Mode=OneTime}" />, CEF: <Run Text="{Binding Source={x:Static cef:Cef.CefVersion}, Mode=OneTime}" />, CefSharp: <Run Text="{Binding Source={x:Static cef:Cef.CefSharpVersion}, Mode=OneTime}"/>, Environment: <Run Text="{Binding Converter={StaticResource EnvironmentConverter}, Mode=OneTime}"/>
                 </TextBlock>
