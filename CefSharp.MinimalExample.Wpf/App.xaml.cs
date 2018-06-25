@@ -14,6 +14,8 @@ namespace CefSharp.MinimalExample.Wpf
                 CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
             };
 
+            settings.DisableTouchpadAndWheelScrollLatching();
+
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
         }
