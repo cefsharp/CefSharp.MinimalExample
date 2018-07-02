@@ -26,6 +26,7 @@ namespace CefSharp.MinimalExample.WinForms
             };
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
+            browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
             browser.LoadingStateChanged += OnLoadingStateChanged;
             browser.ConsoleMessage += OnBrowserConsoleMessage;
             browser.StatusMessage += OnBrowserStatusMessage;
@@ -35,6 +36,16 @@ namespace CefSharp.MinimalExample.WinForms
             var bitness = Environment.Is64BitProcess ? "x64" : "x86";
             var version = String.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}, Environment: {3}", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion, bitness);
             DisplayOutput(version);
+        }
+
+        private void OnIsBrowserInitializedChanged(object sender, IsBrowserInitializedChangedEventArgs e)
+        {
+            if(e.IsBrowserInitialized)
+            {
+                var b = ((ChromiumWebBrowser)sender);
+
+                this.InvokeOnUiThreadIfRequired(() => b.Focus());
+            }
         }
 
         private void OnBrowserConsoleMessage(object sender, ConsoleMessageEventArgs args)
