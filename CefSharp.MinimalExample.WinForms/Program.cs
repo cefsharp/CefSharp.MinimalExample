@@ -4,7 +4,6 @@
 
 using System;
 using System.IO;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
@@ -15,9 +14,35 @@ namespace CefSharp.MinimalExample.WinForms
         [STAThread]
         public static void Main()
         {
-            AppDomain.CurrentDomain.AssemblyResolve += Resolver;
+            var executingFolder = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+
+            //If libcef.dll doesn't exist in our executing folder then we'll copy the files
+            //For this method the user must have write permissions to the executing folder.
+            if (!File.Exists(Path.Combine(executingFolder, "libcef.dll")))
+            {
+                var libPath = Path.Combine(executingFolder, Environment.Is64BitProcess ? "x64" : "x86");
+
+                CopyFilesRecursively(new DirectoryInfo(libPath), new DirectoryInfo(executingFolder));
+
+                Directory.Delete("x86", recursive: true);
+                Directory.Delete("x64", recursive: true);
+            }
 
             LoadApp();
+        }
+
+        //https://stackoverflow.com/a/58779/4583726
+        private static void CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target)
+        {
+            foreach (DirectoryInfo dir in source.GetDirectories())
+            {
+                CopyFilesRecursively(dir, target.CreateSubdirectory(dir.Name));
+            }
+
+            foreach (FileInfo file in source.GetFiles())
+            {
+                file.CopyTo(Path.Combine(target.FullName, file.Name));
+            }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -26,32 +51,10 @@ namespace CefSharp.MinimalExample.WinForms
             //Perform dependency check to make sure all relevant resources are in our output directory.
             var settings = new CefSettings();
 
-            settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
-                                                   Environment.Is64BitProcess ? "x64" : "x86",
-                                                   "CefSharp.BrowserSubprocess.exe");
-
             Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
 
             var browser = new BrowserForm();
             Application.Run(browser);
-        }
-
-        // Will attempt to load missing assembly from either x86 or x64 subdir
-        private static Assembly Resolver(object sender, ResolveEventArgs args)
-        {
-            if (args.Name.StartsWith("CefSharp"))
-            {
-                string assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
-                string archSpecificPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
-                                                       Environment.Is64BitProcess ? "x64" : "x86",
-                                                       assemblyName);
-
-                return File.Exists(archSpecificPath)
-                           ? Assembly.LoadFile(archSpecificPath)
-                           : null;
-            }
-
-            return null;
         }
     }
 }
