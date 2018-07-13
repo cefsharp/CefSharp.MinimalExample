@@ -14,6 +14,8 @@ namespace CefSharp.MinimalExample.Wpf
                 CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
             };
 
+            settings.DisableTouchpadAndWheelScrollLatching();
+            
             //Example of setting a command line argument
             //Enables WebRTC
             settings.CefCommandLineArgs.Add("enable-media-stream", "1");
