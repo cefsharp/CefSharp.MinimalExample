@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Async Javascript Binding Example</title>
+</head>
+<body>
+    <div>
+        <h1>Async Binding Example</h1>
+        <h2>Multiply</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>First Number</td>
+                        <td>Second Number</td>
+                        <td>Result</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input id="firstNumber" type="text" value="4" /></td>
+                        <td><input id="secondNumber" type="text" value="5" /></td>
+                        <td><input id="result" type="text" readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><input type="button" id="calculate" value="Calculate" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        (async function ()
+        {
+            await CefSharp.BindObjectAsync("boundAsync");
+
+            document.getElementById('calculate').addEventListener('click', async function ()
+            {
+                var number1 = parseInt(document.getElementById('firstNumber').value, 10);
+                var number2 = parseInt(document.getElementById('secondNumber').value, 10);
+
+                var result = await boundAsync.multiply(number1, number2);
+
+                document.getElementById('result').value = result;
+            });
+        })();
+    </script>
+</body>
+</html>
