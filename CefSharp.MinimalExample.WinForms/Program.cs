@@ -23,6 +23,13 @@ namespace CefSharp.MinimalExample.WinForms
                 CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
             };
 
+            settings.RegisterScheme(new CefCustomScheme
+            {
+                SchemeName = LocalResourceSchemeHandlerFactory.SchemeName,
+                SchemeHandlerFactory = new LocalResourceSchemeHandlerFactory(),
+                IsSecure = true
+            });
+
             //Example of setting a command line argument
             //Enables WebRTC
             settings.CefCommandLineArgs.Add("enable-media-stream", "1");

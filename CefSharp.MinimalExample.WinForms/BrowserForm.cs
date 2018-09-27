@@ -20,10 +20,12 @@ namespace CefSharp.MinimalExample.WinForms
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser("www.google.com")
+            browser = new ChromiumWebBrowser(string.Empty)
             {
                 Dock = DockStyle.Fill,
             };
+            browser.Load("custom://test.com/index.html");
+
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
             browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
