@@ -20,7 +20,7 @@ namespace CefSharp.MinimalExample.WinForms
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser("www.google.com")
+            browser = new ChromiumWebBrowser("about:blank")
             {
                 Dock = DockStyle.Fill,
             };
@@ -45,6 +45,10 @@ namespace CefSharp.MinimalExample.WinForms
                 var b = ((ChromiumWebBrowser)sender);
 
                 this.InvokeOnUiThreadIfRequired(() => b.Focus());
+
+                var postData = System.Text.Encoding.Default.GetBytes("test=123&data=456");
+
+                browser.LoadUrlWithPostData("https://httpbin.org/post", postData);
             }
         }
 
