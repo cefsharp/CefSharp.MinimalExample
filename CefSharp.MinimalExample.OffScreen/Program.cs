@@ -51,7 +51,7 @@ namespace CefSharp.MinimalExample.OffScreen
             Cef.Shutdown();
         }
 
-        private static async void BrowserLoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
+        private static void BrowserLoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
             // Check to see if loading is complete - this event is called twice, one when loading starts
             // second time when it's finished
@@ -61,49 +61,38 @@ namespace CefSharp.MinimalExample.OffScreen
                 // Remove the load event handler, because we only want one snapshot of the initial page.
                 browser.LoadingStateChanged -= BrowserLoadingStateChanged;
 
-                const string script = "(function(){ var elm = document.getElementById('lst-ib'); elm.value = 'CefSharp Was Here!'; return document.getElementsByName('btnK')[0].getBoundingClientRect(); })();";
+                var scriptTask = browser.EvaluateScriptAsync("document.getElementById('lst-ib').value = 'CefSharp Was Here!'");
 
-                var jsResponse = await browser.EvaluateScriptAsync(script);
-
-                if(jsResponse.Success)
+                scriptTask.ContinueWith(t =>
                 {
-                    dynamic domRect = jsResponse.Result;
-
-                    var x = (int)(domRect.x + (domRect.width / 2));
-                    var y = (int)(domRect.y + (domRect.height / 2));
-
-                    var host = browser.GetBrowserHost();
-
-                    host.SendMouseClickEvent(x, y, MouseButtonType.Left, false, 1, CefEventFlags.None);
-                    Thread.Sleep(15);
-                    host.SendMouseClickEvent(x, y, MouseButtonType.Left, true, 1, CefEventFlags.None);
-
                     //Give the browser a little time to render
-                    Thread.Sleep(2500);
+                    Thread.Sleep(500);
                     // Wait for the screenshot to be taken.
-                    var bitmap = await browser.ScreenshotAsync();
+                    var task = browser.ScreenshotAsync();
+                    task.ContinueWith(x =>
+                    {
+                        // Make a file to save it to (e.g. C:\Users\jan\Desktop\CefSharp screenshot.png)
+                        var screenshotPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "CefSharp screenshot.png");
 
-                    // Make a file to save it to (e.g. C:\Users\jan\Desktop\CefSharp screenshot.png)
-                    var screenshotPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "CefSharp screenshot.png");
+                        Console.WriteLine();
+                        Console.WriteLine("Screenshot ready. Saving to {0}", screenshotPath);
 
-                    Console.WriteLine();
-                    Console.WriteLine("Screenshot ready. Saving to {0}", screenshotPath);
+                        // Save the Bitmap to the path.
+                        // The image type is auto-detected via the ".png" extension.
+                        task.Result.Save(screenshotPath);
 
-                    // Save the Bitmap to the path.
-                    // The image type is auto-detected via the ".png" extension.
-                    bitmap.Save(screenshotPath);
+                        // We no longer need the Bitmap.
+                        // Dispose it to avoid keeping the memory alive.  Especially important in 32-bit applications.
+                        task.Result.Dispose();
 
-                    // We no longer need the Bitmap.
-                    // Dispose it to avoid keeping the memory alive.  Especially important in 32-bit applications.
-                    bitmap.Dispose();
+                        Console.WriteLine("Screenshot saved.  Launching your default image viewer...");
 
-                    Console.WriteLine("Screenshot saved.  Launching your default image viewer...");
+                        // Tell Windows to launch the saved image.
+                        Process.Start(screenshotPath);
 
-                    // Tell Windows to launch the saved image.
-                    Process.Start(screenshotPath);
-
-                    Console.WriteLine("Image viewer launched.  Press any key to exit.");
-                }
+                        Console.WriteLine("Image viewer launched.  Press any key to exit.");			
+                    }, TaskScheduler.Default);
+                });
             }
         }
     }
