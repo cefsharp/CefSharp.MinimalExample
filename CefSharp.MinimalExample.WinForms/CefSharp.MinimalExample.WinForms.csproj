@@ -113,6 +113,12 @@
   <ItemGroup>
     <None Include="Resources\chromium-256.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CefSharp.MinimalExample.Common\CefSharp.MinimalExample.Common.csproj">
+      <Project>{73d5dd57-12fb-4928-aeb3-8f6333b9d746}</Project>
+      <Name>CefSharp.MinimalExample.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\CefSharp.Common.69.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.69.0.0\build\CefSharp.Common.targets')" />
   <Import Project="..\packages\CefSharp.WinForms.69.0.0\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.69.0.0\build\CefSharp.WinForms.targets')" />

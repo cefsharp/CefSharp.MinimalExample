@@ -40,12 +40,7 @@
             <Button Content="View source" Command="{Binding WebBrowser.ViewSourceCommand, ElementName=Browser}" Grid.Column="4" Width="75" />
         </Grid>
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
-            <wpf:ChromiumWebBrowser x:Name="Browser"
-                                    Address="www.google.com">
-                <i:Interaction.Behaviors>
-                    <behaviours:HoverLinkBehaviour x:Name="HoverLinkBehaviour"/>
-                </i:Interaction.Behaviors>
-            </wpf:ChromiumWebBrowser>
+            <ContentControl x:Name="BrowserContent"/>
         </Border>
         <ProgressBar IsIndeterminate="{Binding IsLoading, ElementName=Browser}"
                      HorizontalAlignment="Stretch"

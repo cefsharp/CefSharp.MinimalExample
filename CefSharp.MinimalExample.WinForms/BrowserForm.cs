@@ -4,6 +4,7 @@
 
 using System;
 using System.Windows.Forms;
+using CefSharp.MinimalExample.Common;
 using CefSharp.MinimalExample.WinForms.Controls;
 using CefSharp.WinForms;
 
@@ -16,27 +17,35 @@ namespace CefSharp.MinimalExample.WinForms
         public BrowserForm()
         {
             InitializeComponent();
-
+            DataProvider.CallBackObject.WebBrowserCallBack += CallBackObject_WebBrowserCallBack;
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
-
-            browser = new ChromiumWebBrowser("www.google.com")
+           
+            browser = new ChromiumWebBrowser()
             {
                 Dock = DockStyle.Fill,
             };
+            browser.RegisterAsyncJsObject("callBack", DataProvider.CallBackObject, new BindingOptions { CamelCaseJavascriptNames = false });
             toolStripContainer.ContentPanel.Controls.Add(browser);
-
+        
             browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
             browser.LoadingStateChanged += OnLoadingStateChanged;
             browser.ConsoleMessage += OnBrowserConsoleMessage;
             browser.StatusMessage += OnBrowserStatusMessage;
             browser.TitleChanged += OnBrowserTitleChanged;
             browser.AddressChanged += OnBrowserAddressChanged;
-
+            LoadUrl(DataProvider.GanttUrl);
             var bitness = Environment.Is64BitProcess ? "x64" : "x86";
             var version = String.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}, Environment: {3}", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion, bitness);
             DisplayOutput(version);
         }
+
+        private void CallBackObject_WebBrowserCallBack(object sender, GanttBoundObjectEventArgs e)
+        {
+            MessageBox.Show($"{e.GanttCallBackName}({e.Data})");
+        }
+
+        
 
         private void OnIsBrowserInitializedChanged(object sender, IsBrowserInitializedChangedEventArgs e)
         {
@@ -155,10 +164,8 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void LoadUrl(string url)
         {
-            if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
-            {
-                browser.Load(url);
-            }
+            browser.Load(url);
+            
         }
 
         private void ShowDevToolsMenuItemClick(object sender, EventArgs e)
