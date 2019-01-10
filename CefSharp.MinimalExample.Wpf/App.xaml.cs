@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CefSharp.Wpf;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -23,11 +24,8 @@ namespace CefSharp.MinimalExample.Wpf
         {
             //Perform dependency check to make sure all relevant resources are in our output directory.
             var settings = new CefSettings();
-            settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
-                                                   Environment.Is64BitProcess ? "x64" : "x86",
-                                                   "CefSharp.BrowserSubprocess.exe");
 
-            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler:null);
+            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler:null);
         }
 
         // Will attempt to load missing assembly from either x86 or x64 subdir

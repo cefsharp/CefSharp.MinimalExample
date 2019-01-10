@@ -36,12 +36,8 @@ namespace CefSharp.MinimalExample.OffScreen
 
             var settings = new CefSettings();
 
-            settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
-                                                   Environment.Is64BitProcess ? "x64" : "x86",
-                                                   "CefSharp.BrowserSubprocess.exe");
-
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
+            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
             // Create the offscreen Chromium browser.
             browser = new ChromiumWebBrowser(testUrl);
