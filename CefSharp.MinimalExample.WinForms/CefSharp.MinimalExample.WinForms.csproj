@@ -63,6 +63,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
+  <ItemGroup Condition="'$(Platform)' == 'x86'">
+    <Reference Include="CefSharp.BrowserSubprocess.Core">
+      <HintPath>$(CefSharpBrowserProcessCore32)</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Platform)' == 'x64'">
+    <Reference Include="CefSharp.BrowserSubprocess.Core">
+      <HintPath>$(CefSharpBrowserProcessCore64)</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowserForm.cs">
       <SubType>Form</SubType>
@@ -79,6 +91,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RenderProcess\RenderProcessHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BrowserForm.resx">
