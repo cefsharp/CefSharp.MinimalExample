@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:CefSharp.MinimalExample.FlushTest"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <local:TitleConverter x:Key="TitleConverter"/>
+        <local:EnvironmentConverter x:Key="EnvironmentConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Application.Resources>
 </Application>
