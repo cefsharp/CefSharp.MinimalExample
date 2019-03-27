@@ -45,10 +45,7 @@ namespace CefSharp.MinimalExample.FlushTest
             this.Browser.LoadingStateChanged += Browser_LoadingStateChanged;
         }
 
-        private void CallBackObject_WebBrowserCallBack(object sender, GanttBoundObjectEventArgs e)
-        {
-            MessageBox.Show($"{e.GanttCallBackName}({e.Data})");
-        }
+      
 
         private void Browser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {

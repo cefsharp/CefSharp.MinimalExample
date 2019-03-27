@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CefSharp.MinimalExample.FlushTest"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
         mc:Ignorable="d"
         Title="{Binding Path=Title, ElementName=Browser, Converter={StaticResource TitleConverter}}" Height="450" Width="800">
     <Grid>

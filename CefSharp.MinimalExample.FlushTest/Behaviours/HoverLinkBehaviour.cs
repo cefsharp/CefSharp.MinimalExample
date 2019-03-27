@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Interactivity;
+using CefSharp.Wpf;
 
 namespace CefSharp.MinimalExample.FlushTest
 {
