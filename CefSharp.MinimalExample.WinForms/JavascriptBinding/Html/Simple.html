@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>CefSharp Javascript Binding Demo</title>
+
+    <script type="text/javascript">
+        //Register the object immediately
+        (async function ()
+        {
+            await CefSharp.BindObjectAsync("simpleBoundEventHandler");
+        })();
+    </script>
+</head>
+<body>
+    <h1>CefSharp Javascript Binding Demo - Simple.html</h1>
+
+    The button below will call a c# method that navigates to http://binding.cefsharp.test
+    <br />
+    <br />
+
+
+    <input type="button" id="linkButton" value="Navigate to http://binding.cefsharp.test" data-link="http://binding.cefsharp.test" />
+
+    <script type="text/javascript">
+        //Once the DOM has loaded we hook up the event handler
+        //In 99% of cases simpleBoundEventHandler will have been bound by now.
+        (async function ()
+        {
+            let elm = document.getElementById('linkButton');
+
+            elm.addEventListener('click', function (e)
+            {
+                var evtArgs = { id: e.target.id, tagName: e.target.tagName, link: e.target.getAttribute('data-link') };
+                simpleBoundEventHandler.raiseEvent('click', evtArgs);
+            });
+        })();
+    </script>
+</body>
+</html>

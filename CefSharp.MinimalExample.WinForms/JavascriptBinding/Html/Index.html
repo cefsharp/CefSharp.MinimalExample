@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>CefSharp Javascript Binding Demo</title>
+
+    <script type="text/javascript">
+        //Here we have a simple method that helps us call our bound object from an event
+        //To bind multiple events to the one bound object this method should be modified
+        CefSharp.RegisterEvent = async function (boundObjName, boundObjMethodName, targetObj, evtName)
+        {
+            await CefSharp.BindObjectAsync(boundObjName);
+
+            let addEvent = function ()
+            {
+                var isElement = targetObj instanceof HTMLElement;
+                var elem = isElement ? targetObj : document.getElementById(targetObj);
+
+                elem.addEventListener(evtName, function (e)
+                {
+                    //Create your own custom event args here
+                    var evtArgs = { id: e.target.id, tagName: e.target.tagName, link: e.target.getAttribute('data-link') };
+                    window[boundObjName][boundObjMethodName](evtName, evtArgs);
+                });
+            };
+
+            switch (document.readyState)
+            {
+                case "loading":
+                    {
+                        // Document still loading
+                        document.addEventListener("DOMContentLoaded", function (event)
+                        {
+                            addEvent();
+                        });
+
+                        break;
+                    }
+                case "interactive":
+                case "complete":
+                    {
+                        addEvent();
+
+                        break;
+                    }
+            }
+        };
+
+        (function ()
+        {
+            //boundEventHandler is the object name to be registered
+            //raiseEvent is the method on the bound object to be called (as a string)
+            //minButton is the button name
+            //click is the event that will be subscribed to.
+            CefSharp.RegisterEvent('boundEventHandler', 'raiseEvent', 'linkButton', 'click');
+        })();
+    </script>
+</head>
+<body>
+    <h1>CefSharp Javascript Binding Demo - index.html</h1>
+
+    The button below will call a c# method that navigates to http://cefsharp.binding.test
+    <br />
+    <br />
+
+    <input type="button" id="linkButton" value="Navigate to http://cefsharp.binding.test" data-link="http://cefsharp.binding.test" />
+</body>
+</html>

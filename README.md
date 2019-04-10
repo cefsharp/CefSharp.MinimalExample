@@ -1,12 +1,7 @@
 CefSharp.MinimalExample
 =======================
 
-Minimal example of how the CefSharp library can be used using the official `Nuget` packages. 
+Javascript Binding Demo
 
-Includes examples for
-- WinForms
-- WPF
-- OffScreen
- 
-
-For a more complete example of each project see the main `CefSharp` repository.
+The **WinForms** example has been modified to modify to demonstrate Javascript Binding in CefSharp
+See https://github.com/cefsharp/CefSharp/wiki/General-Usage#3-how-do-you-expose-a-net-class-to-javascript for the official documentation.
