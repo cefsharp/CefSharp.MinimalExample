@@ -1,0 +1,686 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Normal Html File</title>
+    <style>
+        :root {
+            --orange-100: #f37321;
+            --ocher-100: #fcaf17;
+            --yellow-100: #fddf2e;
+
+        }
+
+        html {
+            background: lightyellow;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: auto;
+            font-family: Arial;
+            line-height: 1.5;
+            font-size: 12px;
+            background: lightgray;
+            -webkit-print-color-adjust: exact;
+            overflow: scroll;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+        div {
+            border: 1px solid orange;
+            box-sizing: border-box;
+            flex: 1 1 auto;
+
+            display: flex;
+            width: 100%;
+
+            border: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .page {
+            background: greenyellow;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.2cm;
+            box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+            /*A4 physical size*/
+            /*A4 pixels on dpi 72 display= 595 x 842*/
+            /*A4 pixels on dpi 96 display= 794 x 1123*/
+            /*width: 21.0cm;
+            height: 29.7cm;*/
+            width: 794px;
+            height: 1123px;
+        }
+
+        .page-container {
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            flex-flow: column;
+
+            padding: 20px;
+            /*height: 100%;*/
+        }
+
+        .page-header {
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 auto;
+            padding-top: 0px;
+        }
+
+        .page-content {
+            flex: 1 1 auto;
+
+            display: flex;
+            flex-flow: column;
+
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .page-footer {
+            flex: 0 1;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .patient-info {
+            background: var(--orange-100);
+            margin: 10px;
+
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: left;
+            align-items: flex-start;
+        }
+
+        .patient-info-item {
+            margin: 5px;
+
+            display: flex;
+            flex-direction: column;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: flex-start;
+
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .patient-info-item div {
+            margin: 5px;
+        }
+
+        .section-title {
+            background: var(--ocher-100);
+            margin: 10px;
+            margin-top: 0;
+
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+
+            height: 30px;
+        }
+
+        .chart-title {
+            background: var(--orange-100);
+            margin: 10px;
+            margin-top: 0;
+
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+
+            height: 30px;
+        }
+
+        .subchart-title {
+            background: gray;
+            margin: 10px;
+            margin-top: 0;
+
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+
+            height: 30px;
+        }
+
+        .left-right-title {
+            margin: 0 auto;
+            display: flex;
+
+            flex: 0 1 auto;
+
+            height: 40px;
+            flex-flow: row;
+
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .left-title {
+            background: gray;
+            margin-right: 10px;
+            margin-bottom: 10px;
+
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+
+            height: 30px;
+        }
+
+        .right-title {
+            background: gray;
+            margin-left: 10px;
+            margin-bottom: 10px;
+
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+
+            height: 30px;
+        }
+
+        .chart-info {
+            margin: 10px;
+            margin-top: 0;
+
+            flex: 0 1 auto;
+
+            display: flex;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+            align-items: center;
+
+            height: 30px;
+        }
+
+        .chart-control {
+            margin: 0 auto;
+            width: 70%;
+
+            flex: 0 1 auto;
+
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-unit {
+            margin: 0 auto;
+        }
+
+        .chart-unit ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-series {
+            margin: 0 auto;
+        }
+
+        .chart-series ul {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-label {
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .chart-label p {
+            text-align: right;
+            margin: 0 auto;
+            margin-right: 0px;
+        }
+
+        .inactive-btn {
+            min-width: 40px;
+            height: 18px;
+            color: #000000;
+            border: 1px solid #adadad;
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+            padding: 5px;
+            font-size: 15px;
+
+            position: relative;
+            z-index: 99;
+
+            border-bottom: 2px solid #cccccc;
+        }
+
+        .active-btn {
+            min-width: 40px;
+            height: 18px;
+            color: #000000;
+            border: 1px solid #adadad;
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+            padding: 5px;
+            font-size: 15px;
+            font-weight: bold;
+
+            position: relative;
+            z-index: 99;
+
+            background: #eb6e08;
+            box-shadow: 2px 2px 2px 1px #753704 inset;
+        }
+
+        .big-chart {
+            margin: 0 auto;
+            margin-bottom: 10px;
+            min-height: 320px;
+            max-height: 360px;
+        }
+
+        .up-half-charts {
+            margin: 0 auto;
+
+            display: flex;
+            flex-flow: row;
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: flex-start;
+            align-items: top;
+        }
+
+        .up-half-charts div {
+            border: 1px solid orange;
+        }
+
+        .down-half-charts {
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row;
+
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: flex-start;
+            align-items: top;
+        }
+
+        .down-half-charts div {
+            border: 1px solid orange;
+        }
+
+        .small-chart {
+            margin: 5px;
+            min-height: 320px;
+            max-height: 360px;
+            min-width: 360px;
+        }
+
+        .page-footer-container {
+            height: 10px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .page-footer-container ul {
+            width: 100%;
+            float: left;
+            font-size: 14px;
+        }
+
+        .page-footer-container :nth-child(1) {
+            width: 100%;
+            text-align: left;
+        }
+
+        .page-footer-container :nth-child(2) {
+            width: 100%;
+            text-align: center;
+        }
+
+        .page-footer-container :nth-child(3) {
+            width: 100%;
+            text-align: right;
+        }
+
+        .header-left {
+            float: left;
+            font-size: 18px;
+            font-weight: bold;
+
+            flex: 1 1 auto;
+
+            /* NEW, Spec - Firefox, Chrome, Opera */
+            justify-content: center;
+
+            flex-flow: column;
+
+            padding-top: 0%;
+        }
+
+        .header-left :nth-child(1) {
+            height: 33%;
+        }
+
+        .header-left :nth-child(2) {
+            height: 33%;
+        }
+
+        .header-left :nth-child(3) {
+            height: 33%;
+        }
+
+        .header-right {
+            align-items: center;
+            width: 40%;
+        }
+
+        .header-right img {
+            margin: 5px;
+        }
+
+        @media print {
+
+            body,
+            .page {
+                margin: 0;
+                box-shadow: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-1 Header</div>
+            <div class="page-content">
+                <div>Page-1 Content1</div>
+                <div>Page-1 Content2</div>
+                <div>Page-1 Content3</div>
+                <div>Page-1 Content4</div>
+                <div>Page-1 Content5</div>
+                <div>Page-1 Content6</div>
+                <div>Page-1 Content7</div>
+                <div>Page-1 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-1 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-2 Header</div>
+            <div class="page-content">
+                <div>Page-2 Content1</div>
+                <div>Page-2 Content2</div>
+                <div>Page-2 Content3</div>
+                <div>Page-2 Content4</div>
+                <div>Page-2 Content5</div>
+                <div>Page-2 Content6</div>
+                <div>Page-2 Content7</div>
+                <div>Page-2 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-2 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-3 Header</div>
+            <div class="page-content">
+                <div>Page-3 Content1</div>
+                <div>Page-3 Content2</div>
+                <div>Page-3 Content3</div>
+                <div>Page-3 Content4</div>
+                <div>Page-3 Content5</div>
+                <div>Page-3 Content6</div>
+                <div>Page-3 Content7</div>
+                <div>Page-3 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-3 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-4 Header</div>
+            <div class="page-content">
+                <div>Page-4 Content1</div>
+                <div>Page-4 Content2</div>
+                <div>Page-4 Content3</div>
+                <div>Page-4 Content4</div>
+                <div>Page-4 Content5</div>
+                <div>Page-4 Content6</div>
+                <div>Page-4 Content7</div>
+                <div>Page-4 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-4 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-5 Header</div>
+            <div class="page-content">
+                <div>Page-5 Content1</div>
+                <div>Page-5 Content2</div>
+                <div>Page-5 Content3</div>
+                <div>Page-5 Content4</div>
+                <div>Page-5 Content5</div>
+                <div>Page-5 Content6</div>
+                <div>Page-5 Content7</div>
+                <div>Page-5 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-5 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-6 Header</div>
+            <div class="page-content">
+                <div>Page-6 Content1</div>
+                <div>Page-6 Content2</div>
+                <div>Page-6 Content3</div>
+                <div>Page-6 Content4</div>
+                <div>Page-6 Content5</div>
+                <div>Page-6 Content6</div>
+                <div>Page-6 Content7</div>
+                <div>Page-6 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-6 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-7 Header</div>
+            <div class="page-content">
+                <div>Page-7 Content1</div>
+                <div>Page-7 Content2</div>
+                <div>Page-7 Content3</div>
+                <div>Page-7 Content4</div>
+                <div>Page-7 Content5</div>
+                <div>Page-7 Content6</div>
+                <div>Page-7 Content7</div>
+                <div>Page-7 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-7 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-8 Header</div>
+            <div class="page-content">
+                <div>Page-8 Content1</div>
+                <div>Page-8 Content2</div>
+                <div>Page-8 Content3</div>
+                <div>Page-8 Content4</div>
+                <div>Page-8 Content5</div>
+                <div>Page-8 Content6</div>
+                <div>Page-8 Content7</div>
+                <div>Page-8 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-8 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-9 Header</div>
+            <div class="page-content">
+                <div>Page-9 Content1</div>
+                <div>Page-9 Content2</div>
+                <div>Page-9 Content3</div>
+                <div>Page-9 Content4</div>
+                <div>Page-9 Content5</div>
+                <div>Page-9 Content6</div>
+                <div>Page-9 Content7</div>
+                <div>Page-9 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-9 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-10 Header</div>
+            <div class="page-content">
+                <div>Page-10 Content1</div>
+                <div>Page-10 Content2</div>
+                <div>Page-10 Content3</div>
+                <div>Page-10 Content4</div>
+                <div>Page-10 Content5</div>
+                <div>Page-10 Content6</div>
+                <div>Page-10 Content7</div>
+                <div>Page-10 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-10 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-11 Header</div>
+            <div class="page-content">
+                <div>Page-11 Content1</div>
+                <div>Page-11 Content2</div>
+                <div>Page-11 Content3</div>
+                <div>Page-11 Content4</div>
+                <div>Page-11 Content5</div>
+                <div>Page-11 Content6</div>
+                <div>Page-11 Content7</div>
+                <div>Page-11 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-11 Footer</div>
+        </div>
+    </div>
+    <!--div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-12 Header</div>
+            <div class="page-content">
+                <div>Page-12 Content1</div>
+                <div>Page-12 Content2</div>
+                <div>Page-12 Content3</div>
+                <div>Page-12 Content4</div>
+                <div>Page-12 Content5</div>
+                <div>Page-12 Content6</div>
+                <div>Page-12 Content7</div>
+                <div>Page-12 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-12 Footer</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-container">
+            <div class="page-header">A4 Page-13 Header</div>
+            <div class="page-content">
+                <div>Page-13 Content1</div>
+                <div>Page-13 Content2</div>
+                <div>Page-13 Content3</div>
+                <div>Page-13 Content4</div>
+                <div>Page-13 Content5</div>
+                <div>Page-13 Content6</div>
+                <div>Page-13 Content7</div>
+                <div>Page-13 Content8</div>
+            </div>
+            <div class="page-footer">A4 Page-13 Footer</div>
+        </div>
+    </div-->
+    <script>
+        function GetPageCount() {
+            var pages = document.getElementsByClassName("page");
+            return pages.length;
+        }
+        function GetBodyScrollHeight() {
+            return document.body.scrollHeight;
+        }
+        function GetBodyScrollWidth() {
+            return document.body.scrollWidth;
+        }
+    </script>
+</body>
+
+</html>
