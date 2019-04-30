@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding MyTitle}"
     Width="900"
-    Height="600"
+    Height="800"
     mc:Ignorable="d">
     <Window.Resources>
         <Style x:Key="RightScrollViewer" TargetType="{x:Type ScrollViewer}">

@@ -16,6 +16,8 @@ using System.ComponentModel;
 using System.IO;
 using CefSharp.Wpf;
 using CefSharp;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace WpfIssue2751
 {
@@ -37,7 +39,17 @@ namespace WpfIssue2751
             Loaded += OnLoad;
 
             browser.LoadingStateChanged += OnBrowserLoaded;
+
+            InitScreen();
         }
+
+        private void InitScreen()
+        {
+            var screen = Screen.PrimaryScreen.Bounds;
+            ScreenHeight=screen.Height;
+        }
+
+        public double ScreenHeight { get; set; }
 
         private void OnLoad(object sender, RoutedEventArgs e)
         {
@@ -59,7 +71,8 @@ namespace WpfIssue2751
                     BodyWidth = await GetBodyScrollWidth();
                     PageCount = await GetPageCount();
 
-                    browser.Height = BodyHeight;
+                    //browser.Height = BodyHeight;
+                    browser.Height = ScreenHeight*9.103;
                     browser.Width = BodyWidth;
 
                     browser.InvalidateVisual();
