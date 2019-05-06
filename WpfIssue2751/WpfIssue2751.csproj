@@ -107,12 +107,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="normal.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="big.html">
+    <None Include="debug.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

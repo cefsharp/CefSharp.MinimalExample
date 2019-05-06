@@ -31,6 +31,8 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Maximum="{TemplateBinding ScrollableHeight}"
+                                Scroll="PART_VerticalScrollBar_Scroll"
+                                ValueChanged="PART_VerticalScrollBar_ValueChanged"
                                 ViewportSize="{TemplateBinding ViewportHeight}"
                                 Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                                 Value="{TemplateBinding VerticalOffset}" />
@@ -51,58 +53,138 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="700" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackPanel
-            Grid.Row="0"
-            Grid.Column="0"
-            Orientation="Vertical">
-            <TextBlock Margin="5" Text="There are two .html file : normal.html and big.html" />
-            <TextBlock Margin="5" Text="Each of them contains many 'A4' size pages. The size of page is width 794px * height 1123px" />
-            <TextBlock Margin="5" Text="normal.html file contains 11 pages, it will be correctly rendered" />
-            <TextBlock Margin="5" Text="big.html file contains 12 pages, its top part will not be rendered" />
-            <TextBlock Margin="5" Text="The Height of scrollviewer and chromiumBrowser are both 300" />
-            <TextBlock
-                Margin="5"
-                FontSize="20"
-                Text="This issue is related to the resolution of host pc screen" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollViewer
+                Name="myScrollViewer"
+                Width="636"
+                Height="474"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="Gray"
+                HorizontalScrollBarVisibility="auto"
+                Style="{StaticResource RightScrollViewer}"
+                VerticalScrollBarVisibility="Visible">
+                <cefSharp:ChromiumWebBrowser Name="browser" Background="Gray" />
+            </ScrollViewer>
+            <ListBox
+                Name="logList"
+                Grid.Row="1"
+                ItemsSource="{Binding LogCollection}"
+                ScrollViewer.VerticalScrollBarVisibility="Visible" />
+        </Grid>
+        <StackPanel Grid.Column="1">
             <TextBlock />
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="5" Text="Current html page count : " />
-                <TextBlock Margin="5" Text="{Binding PageCount}" />
-                <TextBlock Margin="5" Text="Current html body height : " />
-                <TextBlock Margin="5" Text="{Binding BodyHeight}" />
+                <Button
+                    Name="downBtn"
+                    Click="DownBtn_Click"
+                    Content="Down" />
+                <TextBlock MinWidth="30" Text="{Binding CurrentPage}" />
+                <TextBlock Text=" / " />
+                <TextBlock MinWidth="30" Text="{Binding PageCount}" />
+                <Button
+                    Name="upBtn"
+                    Click="UpBtn_Click"
+                    Content="Up" />
             </StackPanel>
-        </StackPanel>
-        <ScrollViewer
-            Grid.Row="1"
-            Grid.Column="0"
-            Background="Gray"
-            HorizontalScrollBarVisibility="Visible"
-            Style="{StaticResource RightScrollViewer}"
-            VerticalScrollBarVisibility="Visible">
-            <cefSharp:ChromiumWebBrowser Name="browser" Background="Gray" />
-        </ScrollViewer>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock />
+            <StackPanel Orientation="Horizontal">
+                <Button
+                    Name="zoom50"
+                    Margin="5"
+                    Click="Zoom50_Click"
+                    Content="Zoom50" />
+                <Button
+                    Name="zoom100"
+                    Margin="5"
+                    Click="Zoom100_Click"
+                    Content="Zoom100" />
+                <Button
+                    Name="zoom125"
+                    Margin="5"
+                    Click="Zoom125_Click"
+                    Content="Zoom125" />
+            </StackPanel>
             <Button
                 Name="btn1"
                 Width="160"
                 Margin="10"
                 Click="Btn1_Click"
                 Content="Load Normal Html" />
+            <TextBlock />
             <Button
-                Name="btn2"
-                Width="160"
-                Margin="10"
-                Click="Btn2_Click"
-                Content="Load Big Html" />
+                Name="cleanBtn"
+                Width="100"
+                Click="CleanBtn_Click"
+                Content="CleanLog" />
+            <TextBlock Text=" Html Info : " />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Width="120"
+                    Text="BodyHeight:"
+                    TextAlignment="Left" />
+                <TextBlock
+                    MinWidth="100"
+                    Text="{Binding BodyHeight}"
+                    TextAlignment="Left" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Width="120"
+                    Text="BodyWidth:"
+                    TextAlignment="Left" />
+                <TextBlock
+                    MinWidth="100"
+                    Text="{Binding BodyWidth}"
+                    TextAlignment="Left" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Width="120"
+                    Text="HtmlPageHeight:"
+                    TextAlignment="Left" />
+                <TextBlock
+                    MinWidth="100"
+                    Text="{Binding HtmlPageHeight}"
+                    TextAlignment="Left" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Width="120"
+                    Text="HtmlPageWidth:"
+                    TextAlignment="Left" />
+                <TextBlock
+                    MinWidth="100"
+                    Text="{Binding HtmlPageWidth}"
+                    TextAlignment="Left" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Width="120"
+                    Text="ZoomedPageHeight:"
+                    TextAlignment="Left" />
+                <TextBlock
+                    MinWidth="100"
+                    Text="{Binding ZoomedPageHeight}"
+                    TextAlignment="Left" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Width="120"
+                    Text="ZoomedPageWidth:"
+                    TextAlignment="Left" />
+                <TextBlock
+                    MinWidth="100"
+                    Text="{Binding ZoomedPageWidth}"
+                    TextAlignment="Left" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
