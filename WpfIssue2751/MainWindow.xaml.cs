@@ -89,12 +89,22 @@ namespace WpfIssue2751
                     ;
                 }
 
-                AddLog($"myScrollViewer.UpdateLayout()-before");
-                myScrollViewer.UpdateLayout();
-                for(int i = 1; i <= 10; i++)
+                //AddLog($"myScrollViewer.UpdateLayout()-before");
+                //myScrollViewer.UpdateLayout();
+                for(int i = 0; i < 100; i++)
                 {
-                    await Task.Delay(100);
-                    AddLog($"myScrollViewer.UpdateLayout()-For Loop{i*100}");
+                    //AddLog($"OnBrowserSizeChanged()-For Loop={i * 10}ms");
+                    if (CheckRender())
+                    {
+                        AddLog($"OnBrowserSizeChanged()-CheckRender=True, For Loop={i * 10}ms");
+                        break;
+                    }
+                    else
+                    {
+                        AddLog($"OnBrowserSizeChanged()-CheckRender=false, For Loop={i * 10}ms");
+
+                        await Task.Delay(10);
+                    }
                 }
 
                 //await Task.Delay(1000);
@@ -106,6 +116,26 @@ namespace WpfIssue2751
 
                 IsResizing = false;
             }
+        }
+
+        private bool CheckRender()
+        {
+            bool result = false;
+            double body = TotalPageCount * ZoomedPageHeight;
+            ExecuteOnUI(() =>
+            {
+                if ((myScrollViewer.ExtentHeight > body - 10) && (myScrollViewer.ExtentHeight < body + 10))
+                {
+                    result = true;
+                }
+            });
+
+            return result;
+        }
+
+        public void ExecuteOnUI(Action action)
+        {
+            Dispatcher.Invoke(action);
         }
 
         public bool IsBrowserLoaded { get; set; }
