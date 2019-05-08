@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:WpfIssue2751"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding MyTitle}"
-    Width="900"
+    Width="1100" WindowStartupLocation="CenterScreen"
     Height="800"
     mc:Ignorable="d">
     <Window.Resources>
@@ -31,7 +31,6 @@
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Maximum="{TemplateBinding ScrollableHeight}"
-                                Scroll="PART_VerticalScrollBar_Scroll"
                                 ValueChanged="PART_VerticalScrollBar_ValueChanged"
                                 ViewportSize="{TemplateBinding ViewportHeight}"
                                 Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
@@ -57,73 +56,84 @@
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <ScrollViewer
-                Name="myScrollViewer"
-                Width="636"
-                Height="474"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Background="Gray"
-                HorizontalScrollBarVisibility="auto"
-                Style="{StaticResource RightScrollViewer}"
-                VerticalScrollBarVisibility="Visible">
-                <cefSharp:ChromiumWebBrowser Name="browser" Background="Gray" />
-            </ScrollViewer>
-            <ListBox
-                Name="logList"
-                Grid.Row="1"
-                ItemsSource="{Binding LogCollection}"
-                ScrollViewer.VerticalScrollBarVisibility="Visible" />
-        </Grid>
-        <StackPanel Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollViewer
+            Name="myScrollViewer"
+            Width="660"
+            Height="474"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="Gray"
+            HorizontalScrollBarVisibility="auto"
+            Style="{StaticResource RightScrollViewer}"
+            VerticalScrollBarVisibility="Visible">
+            <cefSharp:ChromiumWebBrowser Name="browser" Background="Gray" />
+        </ScrollViewer>
+        <ListBox
+            Name="logList"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding LogCollection}"
+            ScrollViewer.VerticalScrollBarVisibility="Visible" />
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalAlignment="Center">
             <TextBlock />
-            <StackPanel Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button
                     Name="downBtn"
+                    Width="40"
                     Click="DownBtn_Click"
                     Content="Down" />
-                <TextBlock MinWidth="30" Text="{Binding CurrentPage}" />
+                <TextBlock MinWidth="30" Text="{Binding CurrentPageIndex}" />
                 <TextBlock Text=" / " />
-                <TextBlock MinWidth="30" Text="{Binding PageCount}" />
+                <TextBlock MinWidth="30" Text="{Binding TotalPageCount}" />
                 <Button
                     Name="upBtn"
+                    Width="40"
                     Click="UpBtn_Click"
                     Content="Up" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <TextBlock />
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button
-                    Name="zoom50"
+                    Name="zoomOut"
                     Margin="5"
-                    Click="Zoom50_Click"
-                    Content="Zoom50" />
+                    Click="ZoomOut_Click"
+                    Content="ZoomOut" />
+                <TextBlock Width="60" Text="{Binding CurrentZoomIndex}" />
                 <Button
-                    Name="zoom100"
+                    Name="zoomIn"
                     Margin="5"
-                    Click="Zoom100_Click"
-                    Content="Zoom100" />
-                <Button
-                    Name="zoom125"
-                    Margin="5"
-                    Click="Zoom125_Click"
-                    Content="Zoom125" />
+                    Click="ZoomIn_Click"
+                    Content="Zoom In" />
             </StackPanel>
             <Button
                 Name="btn1"
                 Width="160"
-                Margin="10"
+                Margin="5"
                 Click="Btn1_Click"
-                Content="Load Normal Html" />
+                Content="Load Big Html" />
+            <Button
+                Name="btn2"
+                Width="160"
+                Margin="5"
+                Click="Btn2_Click"
+                Content="Load Small Html" />
             <TextBlock />
             <Button
                 Name="cleanBtn"
                 Width="100"
                 Click="CleanBtn_Click"
                 Content="CleanLog" />
+            <TextBlock />
+
             <TextBlock Text=" Html Info : " />
             <StackPanel Orientation="Horizontal">
                 <TextBlock

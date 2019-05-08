@@ -107,7 +107,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="debug.html">
+    <None Include="debug-big.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="debug-Small.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
