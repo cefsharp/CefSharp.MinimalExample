@@ -10,9 +10,9 @@ namespace CefSharp.MinimalExample.Wpf
     {
         public App()
         {
-            //Monitor parent process exit and close subprocesses if parent process exits first
-            //This will at some point in the future becomes the default
-            CefSharpSettings.SubprocessExitIfParentProcessClosed = true;
+        //    //Monitor parent process exit and close subprocesses if parent process exits first
+        //    //This will at some point in the future becomes the default
+          CefSharpSettings.SubprocessExitIfParentProcessClosed = true;
 
             var settings = new CefSettings()
             {
@@ -26,20 +26,20 @@ namespace CefSharp.MinimalExample.Wpf
                 ExternalMessagePump = false,
                 UncaughtExceptionStackSize = 10,
                 PersistUserPreferences = false,
-                WindowlessRenderingEnabled = false,
+                WindowlessRenderingEnabled = true,
                 IgnoreCertificateErrors = true,
             };
             CefSharpSettings.ShutdownOnExit = false;
             CefSharpSettings.LegacyJavascriptBindingEnabled = true;
             CefSharpSettings.SubprocessExitIfParentProcessClosed = true;
 
-            Cef.EnableHighDPISupport();
-            //Example of setting a command line argument
-            //Enables WebRTC
-            settings.CefCommandLineArgs.Add("enable-media-stream", "1");
+          Cef.EnableHighDPISupport();
+        //    //Example of setting a command line argument
+        //    //Enables WebRTC
+           settings.CefCommandLineArgs.Add("enable-media-stream", "1");
 
-            //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
-        }
+        //    //Perform dependency check to make sure all relevant resources are in our output directory.
+        Cef.Initialize(settings);
+       }
     }
 }

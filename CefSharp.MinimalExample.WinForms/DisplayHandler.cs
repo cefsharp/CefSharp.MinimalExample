@@ -31,6 +31,17 @@ namespace CefSharp.MinimalExample.WinForms
 
         }
 
+        /// <summary>
+        /// Called when the overall page loading progress has changed
+        /// </summary>
+        /// <param name="chromiumWebBrowser">The ChromiumWebBrowser control</param>
+        /// <param name="browser">the browser object</param>
+        /// <param name="process">ranges from 0.0 to 1.0.</param>
+        public void OnLoadingProgressChange(IWebBrowser chromiumWebBrowser, IBrowser browser, double progress)
+        {
+             
+        }
+
         bool IDisplayHandler.OnTooltipChanged(IWebBrowser browserControl, ref string text)
         {
             text = "aaaaa";

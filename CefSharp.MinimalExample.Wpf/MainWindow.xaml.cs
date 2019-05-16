@@ -30,7 +30,7 @@ namespace CefSharp.MinimalExample.Wpf
         {
             BrowserContent.Content = Browser;
             DataProvider.CallBackObject.WebBrowserCallBack += CallBackObject_WebBrowserCallBack;
-            Browser.Address=DataProvider.GanttUrl;
+            Browser.Address= DataProvider.GanttUrl;
             this.Browser.LoadingStateChanged += Browser_LoadingStateChanged;
         }
 
