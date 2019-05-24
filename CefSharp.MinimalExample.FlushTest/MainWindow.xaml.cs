@@ -22,6 +22,10 @@ namespace CefSharp.MinimalExample.FlushTest
         {
             InitializeComponent();
             Browser = new ChromiumWebBrowser();
+            Browser.BrowserSettings = new BrowserSettings();
+            Browser.BrowserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
+            Browser.BrowserSettings.WindowlessFrameRate = 25;
+            Browser.BrowserSettings.BackgroundColor = 444444U;
             this.RegisterName("Browser", Browser);
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
