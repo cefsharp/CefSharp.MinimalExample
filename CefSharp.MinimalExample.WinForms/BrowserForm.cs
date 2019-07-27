@@ -2,10 +2,10 @@
 //
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
-using System;
-using System.Windows.Forms;
 using CefSharp.MinimalExample.WinForms.Controls;
 using CefSharp.WinForms;
+using System;
+using System.Windows.Forms;
 
 namespace CefSharp.MinimalExample.WinForms
 {
@@ -38,14 +38,11 @@ namespace CefSharp.MinimalExample.WinForms
             DisplayOutput(version);
         }
 
-        private void OnIsBrowserInitializedChanged(object sender, IsBrowserInitializedChangedEventArgs e)
+        private void OnIsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            if(e.IsBrowserInitialized)
-            {
-                var b = ((ChromiumWebBrowser)sender);
+            var b = ((ChromiumWebBrowser)sender);
 
-                this.InvokeOnUiThreadIfRequired(() => b.Focus());
-            }
+            this.InvokeOnUiThreadIfRequired(() => b.Focus());
         }
 
         private void OnBrowserConsoleMessage(object sender, ConsoleMessageEventArgs args)
