@@ -33,9 +33,21 @@ namespace CefSharp.MinimalExample.WinForms
             browser.TitleChanged += OnBrowserTitleChanged;
             browser.AddressChanged += OnBrowserAddressChanged;
 
+            var version = string.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}",
+               Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion);
+
+#if NETCOREAPP
+            // .NET Core
+            var environment = string.Format("Environment: {0}, Runtime: {1}",
+                System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString().ToLowerInvariant(),
+                System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription);
+#else
+            // .NET Framework
             var bitness = Environment.Is64BitProcess ? "x64" : "x86";
-            var version = String.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}, Environment: {3}", Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion, bitness);
-            DisplayOutput(version);
+            var environment = String.Format("Environment: {0}", bitness);            
+#endif
+
+            DisplayOutput(string.Format("{0}, {1}", version, environment));
         }
 
         private void OnIsBrowserInitializedChanged(object sender, EventArgs e)
