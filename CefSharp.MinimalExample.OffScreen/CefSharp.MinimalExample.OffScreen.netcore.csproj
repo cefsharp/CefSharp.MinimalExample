@@ -1,26 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <RootNamespace>CefSharp.MinimalExample.Wpf</RootNamespace>
-    <ApplicationIcon>chromium-256.ico</ApplicationIcon>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>CefSharp.MinimalExample.OffScreen</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
-    <PackageReference Include="CefSharp.Wpf" Version="75.1.141" />
+    <PackageReference Include="CefSharp.OffScreen" Version="75.1.141" />
 
     <!-- TODO: This additional references should not be needed any more once the 
-         downstream package (CefSharp.Wpf) specifies dependencies for ".NETCoreApp3.0". -->
+         downstream package (CefSharp.OffScreen) specifies dependencies for ".NETCoreApp3.0". -->
     <PackageReference Include="CefSharp.Common" Version="75.1.141" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- TODO: These updates are currently required because CefSharp.Wpf specifies
+    <!-- TODO: These updates are currently required because CefSharp.OffScreen specifies
          <Private>false</Private>, which means these libraries will not be specified in
          the .deps.json file, and so the CoreCLR wouldn't load these. -->
     <Reference Update="CefSharp">
@@ -29,7 +27,7 @@
     <Reference Update="CefSharp.Core">
       <Private>true</Private>
     </Reference>
-    <Reference Update="CefSharp.Wpf">
+    <Reference Update="CefSharp.OffScreen">
       <Private>true</Private>
     </Reference>
   </ItemGroup>

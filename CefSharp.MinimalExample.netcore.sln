@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CefSharp.MinimalExample.Win
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CefSharp.MinimalExample.Wpf.netcore", "CefSharp.MinimalExample.Wpf\CefSharp.MinimalExample.Wpf.netcore.csproj", "{83E2C9C4-2967-4A49-8B2A-D31D33DCFB03}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CefSharp.MinimalExample.OffScreen.netcore", "CefSharp.MinimalExample.OffScreen\CefSharp.MinimalExample.OffScreen.netcore.csproj", "{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{83E2C9C4-2967-4A49-8B2A-D31D33DCFB03}.Release|x64.Build.0 = Release|x64
 		{83E2C9C4-2967-4A49-8B2A-D31D33DCFB03}.Release|x86.ActiveCfg = Release|x86
 		{83E2C9C4-2967-4A49-8B2A-D31D33DCFB03}.Release|x86.Build.0 = Release|x86
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Debug|x64.ActiveCfg = Debug|x64
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Debug|x64.Build.0 = Debug|x64
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Debug|x86.ActiveCfg = Debug|x86
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Debug|x86.Build.0 = Debug|x86
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Release|x64.ActiveCfg = Release|x64
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Release|x64.Build.0 = Release|x64
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Release|x86.ActiveCfg = Release|x86
+		{AB1B7B81-D472-43B2-AFE3-DE5D1B22B9CE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
