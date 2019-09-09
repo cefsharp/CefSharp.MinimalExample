@@ -10,11 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms" Version="75.1.141" />
-
-    <!-- TODO: This additional references should not be needed any more once the 
-         downstream package (CefSharp.WinForms) specifies dependencies for ".NETCoreApp3.0". -->
-    <PackageReference Include="CefSharp.Common" Version="75.1.141" />
+    <PackageReference Include="CefSharp.WinForms" Version="75.1.142" />
   </ItemGroup>
 
   <ItemGroup>
