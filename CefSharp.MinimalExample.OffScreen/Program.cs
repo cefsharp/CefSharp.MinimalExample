@@ -90,6 +90,7 @@ namespace CefSharp.MinimalExample.OffScreen
                         // Tell Windows to launch the saved image.
                         Process.Start(new ProcessStartInfo(screenshotPath)
                         {
+                            // UseShellExecute is false by default on .NET Core.
                             UseShellExecute = true
                         });
 
