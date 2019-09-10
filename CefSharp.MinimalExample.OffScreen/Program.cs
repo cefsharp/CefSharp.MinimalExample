@@ -88,7 +88,11 @@ namespace CefSharp.MinimalExample.OffScreen
                         Console.WriteLine("Screenshot saved.  Launching your default image viewer...");
 
                         // Tell Windows to launch the saved image.
-                        Process.Start(screenshotPath);
+                        Process.Start(new ProcessStartInfo(screenshotPath)
+                        {
+                            // UseShellExecute is false by default on .NET Core.
+                            UseShellExecute = true
+                        });
 
                         Console.WriteLine("Image viewer launched.  Press any key to exit.");			
                     }, TaskScheduler.Default);
