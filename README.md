@@ -1,7 +1,7 @@
 # CefSharp.MinimalExample
 
 Minimal example of how the CefSharp library can be used using the official `Nuget` packages with .NET Framework
-projects (`CefSharp.MnimalExample.sln`) and .NET Core projects (`CefSharp.MinimalExample.netcore.sln`). 
+projects (`CefSharp.MinimalExample.sln`) and .NET Core projects (`CefSharp.MinimalExample.netcore.sln`). 
 
 Includes examples for
 - WinForms
