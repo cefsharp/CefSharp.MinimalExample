@@ -35,6 +35,8 @@ namespace CefSharp.MinimalExample.WinForms
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
             var browser = new BrowserForm();
+            var browser1 = new BrowserForm();
+            browser1.Show();
             Application.Run(browser);
         }
     }

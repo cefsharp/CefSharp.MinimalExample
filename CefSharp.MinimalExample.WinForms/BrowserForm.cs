@@ -18,7 +18,7 @@ namespace CefSharp.MinimalExample.WinForms
             InitializeComponent();
 
             Text = "CefSharp";
-            WindowState = FormWindowState.Maximized;
+            //WindowState = FormWindowState.Maximized;
 
             browser = new ChromiumWebBrowser("www.google.com")
             {
@@ -69,10 +69,10 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void OnLoadingStateChanged(object sender, LoadingStateChangedEventArgs args)
         {
-            SetCanGoBack(args.CanGoBack);
-            SetCanGoForward(args.CanGoForward);
+            //SetCanGoBack(args.CanGoBack);
+            //SetCanGoForward(args.CanGoForward);
 
-            this.InvokeOnUiThreadIfRequired(() => SetIsLoading(!args.CanReload));
+            //this.InvokeOnUiThreadIfRequired(() => SetIsLoading(!args.CanReload));
         }
 
         private void OnBrowserTitleChanged(object sender, TitleChangedEventArgs args)
