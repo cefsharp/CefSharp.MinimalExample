@@ -7,6 +7,8 @@ namespace CefSharp.MinimalExample.Wpf
         public MainWindow()
         {
             InitializeComponent();
+
+            Browser.MenuHandler = new MenuHandler();
         }
     }
 }
