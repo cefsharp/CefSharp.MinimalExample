@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms" Version="75.1.142" />
+    <PackageReference Include="CefSharp.WinForms" Version="75.1.143" />
   </ItemGroup>
 
   <ItemGroup>
