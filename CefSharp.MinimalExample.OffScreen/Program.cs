@@ -2,11 +2,11 @@
 //
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
+using CefSharp.OffScreen;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
-using CefSharp.OffScreen;
 using System.Threading.Tasks;
 
 namespace CefSharp.MinimalExample.OffScreen
@@ -22,10 +22,6 @@ namespace CefSharp.MinimalExample.OffScreen
             Console.WriteLine("This example application will load {0}, take a screenshot, and save it to your desktop.", testUrl);
             Console.WriteLine("You may see Chromium debugging output, please wait...");
             Console.WriteLine();
-
-            //Monitor parent process exit and close subprocesses if parent process exits first
-            //This will at some point in the future becomes the default
-            CefSharpSettings.SubprocessExitIfParentProcessClosed = true;
 
             var settings = new CefSettings()
             {
@@ -94,7 +90,7 @@ namespace CefSharp.MinimalExample.OffScreen
                             UseShellExecute = true
                         });
 
-                        Console.WriteLine("Image viewer launched.  Press any key to exit.");			
+                        Console.WriteLine("Image viewer launched.  Press any key to exit.");
                     }, TaskScheduler.Default);
                 });
             }
