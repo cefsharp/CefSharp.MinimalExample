@@ -20,10 +20,7 @@ namespace CefSharp.MinimalExample.WinForms
             Text = "CefSharp";
             WindowState = FormWindowState.Maximized;
 
-            browser = new ChromiumWebBrowser("www.google.com")
-            {
-                Dock = DockStyle.Fill,
-            };
+            browser = new ChromiumWebBrowser("www.google.com");
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
             browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
@@ -44,7 +41,7 @@ namespace CefSharp.MinimalExample.WinForms
 #else
             // .NET Framework
             var bitness = Environment.Is64BitProcess ? "x64" : "x86";
-            var environment = String.Format("Environment: {0}", bitness);            
+            var environment = String.Format("Environment: {0}", bitness);
 #endif
 
             DisplayOutput(string.Format("{0}, {1}", version, environment));
