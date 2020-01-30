@@ -1,16 +1,14 @@
-﻿// Copyright © 2010-2015 The CefSharp Authors. All rights reserved.
-//
-// Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
-
-using CefSharp.WinForms;
+﻿using CefSharp.Wpf;
 using System;
 using System.IO;
-using System.Windows.Forms;
 
-namespace CefSharp.MinimalExample.WinForms
+namespace CefSharp.MinimalExample.Wpf
 {
     public static class Program
     {
+        /// <summary>
+        /// Application Entry Point.
+        /// </summary>
         [STAThread]
         public static int Main(string[] args)
         {
@@ -48,8 +46,9 @@ namespace CefSharp.MinimalExample.WinForms
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
-            var browser = new BrowserForm();
-            Application.Run(browser);
+            var app = new App();
+            app.InitializeComponent();
+            app.Run();
 
             return 0;
         }
