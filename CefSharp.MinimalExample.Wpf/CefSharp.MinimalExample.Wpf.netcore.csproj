@@ -8,7 +8,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64</Platforms>
-    <BaseIntermediateOutputPath>obj.netcore</BaseIntermediateOutputPath>
     <StartupObject>CefSharp.MinimalExample.Wpf.Program</StartupObject>
   </PropertyGroup>
 
