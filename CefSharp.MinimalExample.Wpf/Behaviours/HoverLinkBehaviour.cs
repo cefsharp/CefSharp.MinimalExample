@@ -1,7 +1,7 @@
 ﻿using CefSharp.Wpf;
 using System.Windows;
-using System.Windows.Interactivity;
 using System;
+using Microsoft.Xaml.Behaviors;
 
 namespace CefSharp.MinimalExample.Wpf.Behaviours
 {

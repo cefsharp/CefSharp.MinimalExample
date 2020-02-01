@@ -4,7 +4,7 @@
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
         xmlns:behaviours="clr-namespace:CefSharp.MinimalExample.Wpf.Behaviours"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:i="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors" 
         Title="{Binding Path=Title, ElementName=Browser, Converter={StaticResource TitleConverter}}"
         WindowState="Maximized">
     <Grid>

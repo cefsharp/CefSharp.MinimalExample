@@ -12,12 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(PlatformTarget)' == 'x64'">
-    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
     <PackageReference Include="CefSharp.Wpf.win-x64" Version="79.1.360-CI3420" />
   </ItemGroup>
   <ItemGroup Condition="'$(PlatformTarget)' == 'x86'">
-    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
     <PackageReference Include="CefSharp.Wpf.win-x86" Version="79.1.360-CI3420" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Program.cs" />
