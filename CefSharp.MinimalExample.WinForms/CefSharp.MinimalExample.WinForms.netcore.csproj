@@ -7,12 +7,19 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64</Platforms>
+    <StartupObject>CefSharp.MinimalExample.WinForms.Program</StartupObject>
   </PropertyGroup>
 
-  <ItemGroup Condition = "'$(PlatformTarget)' == 'x64'">
+  <ItemGroup Condition="'$(PlatformTarget)' == 'x64'">
     <PackageReference Include="CefSharp.WinForms.win-x64" Version="79.1.350" />
   </ItemGroup>
-  <ItemGroup Condition = "'$(PlatformTarget)' == 'x86'">
+  <ItemGroup Condition="'$(PlatformTarget)' == 'x86'">
     <PackageReference Include="CefSharp.WinForms.win-x86" Version="79.1.350" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="packages.config" />
   </ItemGroup>
 </Project>
