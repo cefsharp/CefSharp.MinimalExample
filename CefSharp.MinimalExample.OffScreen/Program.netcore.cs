@@ -19,22 +19,22 @@ namespace CefSharp.MinimalExample.OffScreen
         {
             const string testUrl = "https://www.google.com/";
 
-            Console.WriteLine("This example application will load {0}, take a screenshot, and save it to your desktop.", testUrl);
-            Console.WriteLine("You may see Chromium debugging output, please wait...");
-            Console.WriteLine();
-
             //For Windows 7 and above, app.manifest entries will take precedences of this call
             Cef.EnableHighDPISupport();
 
             //We are using our current exe as the BrowserSubProcess
             //Multiple instances will be spawned to handle all the 
             //Chromium proceses, render, gpu, network, plugin, etc.
-            var subProcessExe = new CefSharp.BrowserSubprocess.BrowserSubprocessExecutable();
+            var subProcessExe = new BrowserSubprocess.BrowserSubprocessExecutable();
             var result = subProcessExe.Main(args);
             if (result > 0)
             {
                 return result;
             }
+
+            Console.WriteLine("This example application will load {0}, take a screenshot, and save it to your desktop.", testUrl);
+            Console.WriteLine("You may see Chromium debugging output, please wait...");
+            Console.WriteLine();
 
             //We use our current exe as the BrowserSubProcess
             var exePath = Process.GetCurrentProcess().MainModule.FileName;

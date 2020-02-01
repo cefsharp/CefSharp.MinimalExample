@@ -23,6 +23,13 @@
     <Compile Remove="Program.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="crash_reporter.cfg" />
     <None Remove="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="crash_reporter.netcore.cfg">
+      <Link>crash_reporter.cfg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
