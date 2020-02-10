@@ -27,4 +27,25 @@
       <Private>true</Private>
     </Reference>
   </ItemGroup>
+
+  <!-- Include CefSharp.BrowserSubprocess.Core so we can selfhost the BrowserSubProcess using our exe -->
+  <Choose>
+    <When Condition="'$(PlatformTarget)' == 'x64'">
+      <ItemGroup>
+        <Reference Include="CefSharp.BrowserSubprocess.Core">
+          <HintPath>$(CefSharpBrowserProcessCore64)</HintPath>
+          <Private>true</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <!-- x86, Win32 and AnyCPU -->
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="CefSharp.BrowserSubprocess.Core">
+          <HintPath>$(CefSharpBrowserProcessCore32)</HintPath>
+          <Private>true</Private>
+        </Reference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
 </Project>

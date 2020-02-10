@@ -1,23 +1,20 @@
-﻿// Copyright © 2010-2015 The CefSharp Authors. All rights reserved.
-//
-// Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
-
-using CefSharp.WinForms;
+﻿using CefSharp.Wpf;
 using System;
 using System.IO;
-using System.Windows.Forms;
 
-namespace CefSharp.MinimalExample.WinForms
+namespace CefSharp.MinimalExample.Wpf
 {
-    public class Program
+    public static class Program
     {
+        /// <summary>
+        /// Application Entry Point.
+        /// </summary>
         [STAThread]
         public static int Main(string[] args)
         {
-            //For Windows 7 and above, best to include relevant app.manifest entries as well
+            //For Windows 7 and above, app.manifest entries will take precedences of this call
             Cef.EnableHighDPISupport();
 
-#if NETCOREAPP
             //We are using our current exe as the BrowserSubProcess
             //Multiple instances will be spawned to handle all the 
             //Chromium proceses, render, gpu, network, plugin, etc.
@@ -27,32 +24,27 @@ namespace CefSharp.MinimalExample.WinForms
             {
                 return result;
             }
-#endif
+
+            //We use our current exe as the BrowserSubProcess
+            var exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
 
             var settings = new CefSettings()
             {
                 //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
-                CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
+                CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache"),
+                BrowserSubprocessPath = exePath
             };
-
-#if NETCOREAPP
-            //We use our Applications exe as the BrowserSubProcess, multiple copies
-            //will be spawned
-            var exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-            settings.BrowserSubprocessPath = exePath;
-#endif
 
             //Example of setting a command line argument
             //Enables WebRTC
-            settings.CefCommandLineArgs.Add("enable-media-stream", "1");
+            settings.CefCommandLineArgs.Add("enable-media-stream");
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
-            var browser = new BrowserForm();
-            Application.Run(browser);
-
-            return 0;
+            var app = new App();
+            app.InitializeComponent();
+            return app.Run();
         }
     }
 }

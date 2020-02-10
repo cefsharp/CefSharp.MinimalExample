@@ -9,6 +9,7 @@ namespace CefSharp.MinimalExample.Wpf
     {
         public App()
         {
+#if !NETCOREAPP
             var settings = new CefSettings()
             {
                 //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
@@ -21,6 +22,7 @@ namespace CefSharp.MinimalExample.Wpf
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+#endif
         }
     }
 }
