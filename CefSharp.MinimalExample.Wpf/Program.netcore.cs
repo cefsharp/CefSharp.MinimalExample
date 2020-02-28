@@ -39,8 +39,9 @@ namespace CefSharp.MinimalExample.Wpf
             //Enables WebRTC
             settings.CefCommandLineArgs.Add("enable-media-stream");
 
-            //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+            // For .NET Core, don't perform a dependency check, to allow publishing single-file
+            // executables.
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
 
             var app = new App();
             app.InitializeComponent();
