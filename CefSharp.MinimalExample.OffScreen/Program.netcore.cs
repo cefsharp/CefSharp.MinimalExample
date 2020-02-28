@@ -46,8 +46,9 @@ namespace CefSharp.MinimalExample.OffScreen
                 BrowserSubprocessPath = exePath
             };
 
-            //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+            // For .NET Core, don't perform a dependency check, to allow publishing single-file
+            // executables.
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
 
             // Create the offscreen Chromium browser.
             browser = new ChromiumWebBrowser(testUrl);
