@@ -8,5 +8,12 @@ namespace CefSharp.MinimalExample.Wpf
         {
             InitializeComponent();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            StackPanel1.Children.Remove(Browser);
+            new Window { Content = Browser}.Show();
+            Close();
+        }
     }
 }
