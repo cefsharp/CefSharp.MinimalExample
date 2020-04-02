@@ -40,10 +40,7 @@ namespace winform.test
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-            Form1 f = new Form1();
-            f.Show();
-            Application.Run(new Form1());
+            Application.Run(new AppContext());
         }
     }
 }

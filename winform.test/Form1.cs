@@ -1,4 +1,5 @@
 ﻿using CefSharp.WinForms;
+using CefSharp.WinForms.Example.Handlers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,8 @@ namespace winform.test
             {
                 Dock = DockStyle.Fill,
             };
+
+            browser.FocusHandler = new FocusHandler();
             Controls.Add(browser);
         }
 
