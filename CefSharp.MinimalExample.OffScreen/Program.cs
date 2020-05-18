@@ -55,11 +55,13 @@ namespace CefSharp.MinimalExample.OffScreen
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
             // Create the offscreen Chromium browser.
-            browser = new ChromiumWebBrowser(testUrl);
+            browser = new ChromiumWebBrowser("http://opensource.spotify.com/cefbuilds/cef_binary_81.3.10%2Bgb223419%2Bchromium-81.0.4044.138_windows32_client.tar.bz2");
+
+            browser.DownloadHandler = new DownloadHandler();
 
             // An event that is fired when the first page is finished loading.
             // This returns to us from another thread.
-            browser.LoadingStateChanged += BrowserLoadingStateChanged;
+            //browser.LoadingStateChanged += BrowserLoadingStateChanged;
 
             // We have to wait for something, otherwise the process will exit too soon.
             Console.ReadKey();
