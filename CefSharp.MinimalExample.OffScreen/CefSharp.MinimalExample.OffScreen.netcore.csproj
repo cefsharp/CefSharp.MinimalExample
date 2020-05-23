@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.OffScreen" Version="79.1.360" />
+    <PackageReference Include="CefSharp.OffScreen" Version="81.3.100" />
   </ItemGroup>
 
   <ItemGroup>

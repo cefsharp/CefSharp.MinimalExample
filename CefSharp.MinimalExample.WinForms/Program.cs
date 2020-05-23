@@ -44,7 +44,7 @@ namespace CefSharp.MinimalExample.WinForms
 
             //Example of setting a command line argument
             //Enables WebRTC
-            settings.CefCommandLineArgs.Add("enable-media-stream", "1");
+            settings.CefCommandLineArgs.Add("enable-media-stream");
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
