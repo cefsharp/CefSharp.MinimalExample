@@ -81,7 +81,7 @@ namespace CefSharp.MinimalExample.OffScreen
                 // Remove the load event handler, because we only want one snapshot of the initial page.
                 browser.LoadingStateChanged -= BrowserLoadingStateChanged;
 
-                var scriptTask = browser.EvaluateScriptAsync("document.getElementById('lst-ib').value = 'CefSharp Was Here!'");
+                var scriptTask = browser.EvaluateScriptAsync("document.querySelector('[name=q]').value = 'CefSharp Was Here!'");
 
                 scriptTask.ContinueWith(t =>
                 {
