@@ -48,12 +48,11 @@ namespace CefSharp.MinimalExample.WinForms
 
         
 
-        private void OnIsBrowserInitializedChanged(object sender, IsBrowserInitializedChangedEventArgs e)
+        private void OnIsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            if(e.IsBrowserInitialized)
+            var b = ((ChromiumWebBrowser)sender);
+            if (b.IsBrowserInitialized)
             {
-                var b = ((ChromiumWebBrowser)sender);
-
                 this.InvokeOnUiThreadIfRequired(() => b.Focus());
             }
         }
