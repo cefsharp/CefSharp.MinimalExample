@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
-    <PackageReference Include="CefSharp.Wpf" Version="81.3.100" />
+    <PackageReference Include="CefSharp.Wpf" Version="83.4.20" />
   </ItemGroup>
 
   <ItemGroup>
