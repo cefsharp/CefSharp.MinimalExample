@@ -1,4 +1,4 @@
-SET cefsharpversion=84.3.10-pre
+SET cefsharpversion=84.4.10
 
 ..\nuget update CefSharp.MinimalExample.OffScreen\CefSharp.MinimalExample.OffScreen.csproj -Id CefSharp.OffScreen -Version %cefsharpversion%
 ..\nuget update CefSharp.MinimalExample.WinForms\CefSharp.MinimalExample.WinForms.csproj -Id CefSharp.WinForms -Version %cefsharpversion%
