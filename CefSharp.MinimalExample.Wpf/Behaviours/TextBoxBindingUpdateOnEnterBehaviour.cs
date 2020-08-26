@@ -1,6 +1,6 @@
-﻿using System.Windows.Interactivity;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
+using Microsoft.Xaml.Behaviors;
 
 namespace CefSharp.MinimalExample.Wpf.Behaviours
 {
