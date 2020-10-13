@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.OffScreen" Version="85.3.120-pre" />
+    <PackageReference Include="CefSharp.OffScreen" Version="85.3.121-pre" />
   </ItemGroup>
 
   <ItemGroup>
