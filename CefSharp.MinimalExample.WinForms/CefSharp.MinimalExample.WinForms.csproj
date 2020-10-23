@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\CefSharp.WinForms.85.3.121-pre\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.85.3.121-pre\build\CefSharp.WinForms.props')" />
-  <Import Project="..\packages\CefSharp.Common.85.3.121-pre\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.85.3.121-pre\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\CefSharp.WinForms.85.3.121\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.85.3.121\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.85.3.121\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.85.3.121\build\CefSharp.Common.props')" />
   <Import Project="..\packages\cef.redist.x86.85.3.12\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.85.3.12\build\cef.redist.x86.props')" />
   <Import Project="..\packages\cef.redist.x64.85.3.12\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.85.3.12\build\cef.redist.x64.props')" />
   <PropertyGroup>
@@ -113,6 +113,6 @@
     <None Include="Resources\chromium-256.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\CefSharp.Common.85.3.121-pre\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.85.3.121-pre\build\CefSharp.Common.targets')" />
-  <Import Project="..\packages\CefSharp.WinForms.85.3.121-pre\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.85.3.121-pre\build\CefSharp.WinForms.targets')" />
+  <Import Project="..\packages\CefSharp.Common.85.3.121\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.85.3.121\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.85.3.121\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.85.3.121\build\CefSharp.WinForms.targets')" />
 </Project>

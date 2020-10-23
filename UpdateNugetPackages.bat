@@ -1,4 +1,4 @@
-SET cefsharpversion=85.3.121-pre
+SET cefsharpversion=85.3.121
 
 ..\nuget restore CefSharp.MinimalExample.sln
 
@@ -9,3 +9,5 @@ SET cefsharpversion=85.3.121-pre
 dotnet add CefSharp.MinimalExample.OffScreen\CefSharp.MinimalExample.OffScreen.netcore.csproj package CefSharp.OffScreen -v %cefsharpversion%
 dotnet add CefSharp.MinimalExample.WinForms\CefSharp.MinimalExample.WinForms.netcore.csproj package CefSharp.WinForms -v %cefsharpversion%
 dotnet add CefSharp.MinimalExample.Wpf\CefSharp.MinimalExample.Wpf.netcore.csproj package CefSharp.Wpf -v %cefsharpversion%
+
+pause
