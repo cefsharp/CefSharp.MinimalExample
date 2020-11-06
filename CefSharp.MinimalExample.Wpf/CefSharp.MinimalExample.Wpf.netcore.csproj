@@ -11,7 +11,7 @@
   
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <RootNamespace>CefSharp.MinimalExample.Wpf</RootNamespace>
     <ApplicationIcon>chromium-256.ico</ApplicationIcon>
@@ -19,6 +19,22 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64</Platforms>
     <StartupObject>CefSharp.MinimalExample.Wpf.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
+    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(PlatformTarget)' == 'x64'">
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <!--
+    When SelfCOntained the whole Runtime is copied, for dev purposes
+    We don't need this in our debug builds
+    -->
+    <SelfContained>false</SelfContained>
   </PropertyGroup>
   
   <ItemGroup>
@@ -33,45 +49,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.Wpf" Version="85.3.130" />
+    <PackageReference Include="CefSharp.Wpf.NetCore" Version="86.0.20-CI3779" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
   </ItemGroup>
-
-  <ItemGroup>
-    <!-- TODO: These updates are currently required because CefSharp.Wpf specifies
-         <Private>false</Private>, which means these libraries will not be specified in
-         the .deps.json file, and so the CoreCLR wouldn't load these. -->
-    <Reference Update="CefSharp">
-      <Private>true</Private>
-    </Reference>
-    <Reference Update="CefSharp.Core">
-      <Private>true</Private>
-    </Reference>
-    <Reference Update="CefSharp.Wpf">
-      <Private>true</Private>
-    </Reference>
-  </ItemGroup>
-
-  <!-- Include CefSharp.BrowserSubprocess.Core so we can selfhost the BrowserSubProcess using our exe -->
-  <Choose>
-    <When Condition="'$(PlatformTarget)' == 'x64'">
-      <ItemGroup>
-        <Reference Include="CefSharp.BrowserSubprocess.Core">
-          <HintPath>$(CefSharpBrowserProcessCore64)</HintPath>
-          <Private>true</Private>
-        </Reference>
-      </ItemGroup>
-    </When>
-    <!-- x86, Win32 and AnyCPU -->
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="CefSharp.BrowserSubprocess.Core">
-          <HintPath>$(CefSharpBrowserProcessCore32)</HintPath>
-          <Private>true</Private>
-        </Reference>
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
 </Project>
