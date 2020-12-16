@@ -49,7 +49,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.Wpf.NetCore" Version="86.0.20-CI3779" />
+    <PackageReference Include="CefSharp.Wpf.NetCore" Version="87.1.11-CI3832" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
   </ItemGroup>
   
