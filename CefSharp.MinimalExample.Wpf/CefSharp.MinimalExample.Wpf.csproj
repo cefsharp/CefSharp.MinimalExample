@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\CefSharp.Wpf.85.3.130\build\CefSharp.Wpf.props" Condition="Exists('..\packages\CefSharp.Wpf.85.3.130\build\CefSharp.Wpf.props')" />
-  <Import Project="..\packages\CefSharp.Common.85.3.130\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.85.3.130\build\CefSharp.Common.props')" />
-  <Import Project="..\packages\cef.redist.x86.85.3.13\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.85.3.13\build\cef.redist.x86.props')" />
-  <Import Project="..\packages\cef.redist.x64.85.3.13\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.85.3.13\build\cef.redist.x64.props')" />
+  <Import Project="..\packages\CefSharp.Common.87.1.12-CI3836\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.87.1.12-CI3836\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.87.1.12\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.87.1.12\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.87.1.12\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.87.1.12\build\cef.redist.x64.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -70,6 +69,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CefSharp, Version=87.1.12.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Common.87.1.12-CI3836\lib\net452\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=87.1.12.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Common.87.1.12-CI3836\lib\net452\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Wpf, Version=87.1.12.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Wpf.87.1.12-CI3836\lib\net452\CefSharp.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -143,8 +151,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\CefSharp.Common.85.3.130\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.85.3.130\build\CefSharp.Common.targets')" />
-  <Import Project="..\packages\CefSharp.Wpf.85.3.130\build\CefSharp.Wpf.targets" Condition="Exists('..\packages\CefSharp.Wpf.85.3.130\build\CefSharp.Wpf.targets')" />
+  <Import Project="..\packages\CefSharp.Common.87.1.12-CI3836\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.87.1.12-CI3836\build\CefSharp.Common.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

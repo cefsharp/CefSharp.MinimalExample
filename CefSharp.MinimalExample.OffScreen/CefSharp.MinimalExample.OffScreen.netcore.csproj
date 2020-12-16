@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.OffScreen.NetCore" Version="87.1.11-CI3832" />
+    <PackageReference Include="CefSharp.OffScreen.NetCore" Version="87.1.12-CI3836" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.1" />
   </ItemGroup>
   
