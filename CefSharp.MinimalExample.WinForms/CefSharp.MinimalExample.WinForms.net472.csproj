@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!-- Note: We cannot use the recommended style of specifying <Project Sdk=...> because we need
+       to set BaseIntermediateOutputPath and BaseOutputPath before the SDK props are imported. -->
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>obj.net472\</BaseIntermediateOutputPath>
+    <BaseOutputPath>bin.net472\</BaseOutputPath>
+  </PropertyGroup>
+
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>CefSharp.MinimalExample.WinForms</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Platforms>x86;x64</Platforms>
+	<ProjectGuid>{1D1D63D1-5257-4AA0-A284-7EF4574878CB}</ProjectGuid>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CefSharp.WinForms" Version="87.1.130-pre" />
+  </ItemGroup>
+  
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
+</Project>
