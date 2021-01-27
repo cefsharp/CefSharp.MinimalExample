@@ -125,4 +125,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\CefSharp.Common.87.1.132\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.87.1.132\build\CefSharp.Common.targets')" />
+  <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
+    <CallTarget Targets="CefSharpAfterBuildDiagnostic"/>
+  </Target>
 </Project>
