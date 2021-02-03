@@ -9,7 +9,6 @@ namespace CefSharp.MinimalExample.Wpf
     {
         public App()
         {
-#if !NETCOREAPP
             var settings = new CefSettings()
             {
                 //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
@@ -28,9 +27,15 @@ namespace CefSharp.MinimalExample.Wpf
             //For screen sharing add (see https://bitbucket.org/chromiumembedded/cef/issues/2582/allow-run-time-handling-of-media-access#comment-58677180)
             settings.CefCommandLineArgs.Add("enable-usermedia-screen-capturing");
 
-            //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+            var dependencyCheck = true;
+
+#if NETCOREAPP
+            //This should be fixed shortly.
+            dependencyCheck = false;
 #endif
+
+            //Perform dependency check to make sure all relevant resources are in our output directory.
+            Cef.Initialize(settings, performDependencyCheck: dependencyCheck, browserProcessHandler: null);
         }
     }
 }

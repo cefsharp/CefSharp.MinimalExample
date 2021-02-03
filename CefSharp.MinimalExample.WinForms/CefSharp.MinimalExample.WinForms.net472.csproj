@@ -3,23 +3,23 @@
   <!-- Note: We cannot use the recommended style of specifying <Project Sdk=...> because we need
        to set BaseIntermediateOutputPath and BaseOutputPath before the SDK props are imported. -->
   <PropertyGroup>
-    <BaseIntermediateOutputPath>obj.netcore\</BaseIntermediateOutputPath>
-    <BaseOutputPath>bin.netcore\</BaseOutputPath>
+    <BaseIntermediateOutputPath>obj.net472\</BaseIntermediateOutputPath>
+    <BaseOutputPath>bin.net472\</BaseOutputPath>
   </PropertyGroup>
 
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
-  
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <RootNamespace>CefSharp.MinimalExample.Wpf</RootNamespace>
-    <ApplicationIcon>chromium-256.ico</ApplicationIcon>
+    <TargetFramework>net472</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>CefSharp.MinimalExample.WinForms</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64</Platforms>
+	<ProjectGuid>{1D1D63D1-5257-4AA0-A284-7EF4574878CB}</ProjectGuid>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <Compile Remove="bin\**" />
     <Compile Remove="obj\**" />
@@ -27,13 +27,10 @@
     <EmbeddedResource Remove="obj\**" />
     <None Remove="bin\**" />
     <None Remove="obj\**" />
-    <Page Remove="bin\**" />
-    <Page Remove="obj\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.Wpf.NetCore" Version="87.1.132" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="CefSharp.WinForms" Version="87.1.132" />
   </ItemGroup>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />

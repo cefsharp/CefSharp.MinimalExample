@@ -11,8 +11,7 @@
   
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>CefSharp.MinimalExample.OffScreen</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -29,44 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.OffScreen" Version="86.0.241" />
+    <PackageReference Include="CefSharp.OffScreen.NetCore" Version="87.1.132" />
   </ItemGroup>
-
-  <ItemGroup>
-    <!-- TODO: These updates are currently required because CefSharp.OffScreen specifies
-         <Private>false</Private>, which means these libraries will not be specified in
-         the .deps.json file, and so the CoreCLR wouldn't load these. -->
-    <Reference Update="CefSharp">
-      <Private>true</Private>
-    </Reference>
-    <Reference Update="CefSharp.Core">
-      <Private>true</Private>
-    </Reference>
-    <Reference Update="CefSharp.OffScreen">
-      <Private>true</Private>
-    </Reference>
-  </ItemGroup>
-
-  <!-- Include CefSharp.BrowserSubprocess.Core so we can selfhost the BrowserSubProcess using our exe -->
-  <Choose>
-    <When Condition="'$(PlatformTarget)' == 'x64'">
-      <ItemGroup>
-        <Reference Include="CefSharp.BrowserSubprocess.Core">
-          <HintPath>$(CefSharpBrowserProcessCore64)</HintPath>
-          <Private>true</Private>
-        </Reference>
-      </ItemGroup>
-    </When>
-    <!-- x86, Win32 and AnyCPU -->
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="CefSharp.BrowserSubprocess.Core">
-          <HintPath>$(CefSharpBrowserProcessCore32)</HintPath>
-          <Private>true</Private>
-        </Reference>
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
 </Project>

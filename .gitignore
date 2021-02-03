@@ -3,6 +3,8 @@
 [Oo]bj/
 [Bb]in.netcore/
 [Oo]bj.netcore/
+[Bb]in.net472/
+[Oo]bj.net472/
 
 # mstest test results
 TestResults
