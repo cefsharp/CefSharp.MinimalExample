@@ -13,10 +13,10 @@ For a more complete example of each project see the main `CefSharp` repository.
 
 ## .NET Core support
 
-The first `-pre` set of `NETCore/Net 5` packages are now on Nuget.org
-- https://www.nuget.org/packages/CefSharp.WinForms.NETCore/87.1.130-pre
-- https://www.nuget.org/packages/CefSharp.Wpf.NETCore/87.1.130-pre
-- https://www.nuget.org/packages/CefSharp.OffScreen.NETCore/87.1.130-pre
+For `.Net Core 3.1/Net 5` the following packages are now on Nuget.org
+- https://www.nuget.org/packages/CefSharp.WinForms.NETCore
+- https://www.nuget.org/packages/CefSharp.Wpf.NETCore
+- https://www.nuget.org/packages/CefSharp.OffScreen.NETCore
 - Publish Example
   - x86: `dotnet publish -f netcoreapp3.1 -r win-x86
   - x64: `dotnet publish -f netcoreapp3.1 -r win-x64
