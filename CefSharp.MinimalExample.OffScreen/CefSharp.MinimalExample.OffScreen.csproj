@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\CefSharp.OffScreen.71.0.0-pre01\build\CefSharp.OffScreen.props" Condition="Exists('..\packages\CefSharp.OffScreen.71.0.0-pre01\build\CefSharp.OffScreen.props')" />
-  <Import Project="..\packages\CefSharp.Common.71.0.0-pre01\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.71.0.0-pre01\build\CefSharp.Common.props')" />
-  <Import Project="..\packages\cef.redist.x86.3.3578.1860\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.3.3578.1860\build\cef.redist.x86.props')" />
-  <Import Project="..\packages\cef.redist.x64.3.3578.1860\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.3.3578.1860\build\cef.redist.x64.props')" />
+  <Import Project="..\packages\CefSharp.Common.87.1.132\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.87.1.132\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.87.1.13\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.87.1.13\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.87.1.13\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.87.1.13\build\cef.redist.x64.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -87,6 +86,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CefSharp, Version=87.1.132.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Common.87.1.132\lib\net452\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=87.1.132.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.Common.87.1.132\lib\net452\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.OffScreen, Version=87.1.132.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
+      <HintPath>..\packages\CefSharp.OffScreen.87.1.132\lib\net452\CefSharp.OffScreen.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -97,25 +105,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CefSharp.Core\CefSharp.Core.vcxproj">
-      <Project>{7b495581-2271-4f41-9476-acb86e8c864f}</Project>
-      <Name>CefSharp.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CefSharp.OffScreen\CefSharp.OffScreen.csproj">
-      <Project>{483b158d-f57d-49d9-9046-31e6a73f8a53}</Project>
-      <Name>CefSharp.OffScreen</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CefSharp\CefSharp.csproj">
-      <Project>{a55848cc-10e7-40cb-addb-04740b16dd43}</Project>
-      <Name>CefSharp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\CefSharp.Common.71.0.0-pre01\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.71.0.0-pre01\build\CefSharp.Common.targets')" />
-  <Import Project="..\packages\CefSharp.OffScreen.71.0.0-pre01\build\CefSharp.OffScreen.targets" Condition="Exists('..\packages\CefSharp.OffScreen.71.0.0-pre01\build\CefSharp.OffScreen.targets')" />
+  <Import Project="..\packages\CefSharp.Common.87.1.132\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.87.1.132\build\CefSharp.Common.targets')" />
 </Project>
