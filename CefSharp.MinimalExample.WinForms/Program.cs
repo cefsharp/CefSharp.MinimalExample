@@ -14,6 +14,12 @@ namespace CefSharp.MinimalExample.WinForms
         [STAThread]
         public static int Main(string[] args)
         {
+
+#if ANYCPU
+            //Only required for PlatformTarget of AnyCPU
+            AppDomain.CurrentDomain.AssemblyResolve += Resolver;
+#endif
+
             //For Windows 7 and above, best to include relevant app.manifest entries as well
             Cef.EnableHighDPISupport();
 
@@ -50,5 +56,26 @@ namespace CefSharp.MinimalExample.WinForms
 
             return 0;
         }
+
+        // Will attempt to load missing assembly from either x86 or x64 subdir
+        //when PlatformTarget is AnyCPU
+#if ANYCPU
+        private static System.Reflection.Assembly Resolver(object sender, ResolveEventArgs args)
+        {
+            if (args.Name.StartsWith("CefSharp.Core.Runtime"))
+            {
+                string assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
+                string archSpecificPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
+                                                       Environment.Is64BitProcess ? "x64" : "x86",
+                                                       assemblyName);
+
+                return File.Exists(archSpecificPath)
+                           ? System.Reflection.Assembly.LoadFile(archSpecificPath)
+                           : null;
+            }
+
+            return null;
+        }
+#endif
     }
 }
