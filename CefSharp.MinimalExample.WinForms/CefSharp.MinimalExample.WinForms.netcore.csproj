@@ -16,7 +16,7 @@
     <RootNamespace>CefSharp.MinimalExample.WinForms</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Platforms>x86;x64</Platforms>
+    <Platforms>x86;x64;AnyCPU</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,6 +31,20 @@
   <ItemGroup>
     <PackageReference Include="CefSharp.WinForms.NetCore" Version="88.2.40-pre" />
   </ItemGroup>
+  
+  <Target Name="CefSharpAfterBuildDiagnostic" AfterTargets="AfterBuild">
+    <Message Importance="high" Text="CefSharp After Build Diagnostic" />
+    <Message Importance="high" Text="RuntimeIdentifier = $(RuntimeIdentifier)" />
+    <Message Importance="high" Text="Platform = $(Platform)" />
+    <Message Importance="high" Text="PlatformName = $(PlatformName)" />
+    <Message Importance="high" Text="Platforms = $(Platforms)" />
+    <Message Importance="high" Text="PlatformTarget = $(PlatformTarget)" />
+    <Message Importance="high" Text="PlatformTargetAsMSBuildArchitecture = $(PlatformTargetAsMSBuildArchitecture)" />
+    <Message Importance="high" Text="TargetFramework = $(TargetFramework)" />
+    <Message Importance="high" Text="TargetFrameworkVersion = $(TargetFrameworkVersion)" />
+    <Message Importance="high" Text="NuGetProjectStyle = $(NuGetProjectStyle)" />
+    <Message Importance="high" Text="OutDir = $(OutDir)" />
+  </Target>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
 </Project>

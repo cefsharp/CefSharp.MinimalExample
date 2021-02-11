@@ -15,7 +15,7 @@
     <RootNamespace>CefSharp.MinimalExample.OffScreen</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Platforms>x86;x64</Platforms>
+    <Platforms>x86;x64;AnyCPU</Platforms>
   </PropertyGroup>
   
   <ItemGroup>
