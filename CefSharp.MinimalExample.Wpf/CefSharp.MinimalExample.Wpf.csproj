@@ -22,6 +22,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+    <CefSharpBuildAction>Content</CefSharpBuildAction>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
