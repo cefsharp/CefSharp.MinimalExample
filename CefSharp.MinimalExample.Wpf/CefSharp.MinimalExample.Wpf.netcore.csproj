@@ -23,6 +23,7 @@
         https://github.com/dotnet/docs/issues/12237
         -->
     <RollForward>Major</RollForward>
+    <StartupObject>CefSharp.MinimalExample.Wpf.App</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
@@ -45,6 +46,7 @@
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     <!-- Include our native files in the resulting exe -->
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <StartupObject>CefSharp.MinimalExample.Wpf.ProgramPublishSingleFile</StartupObject>
   </PropertyGroup>
   
   <ItemGroup>

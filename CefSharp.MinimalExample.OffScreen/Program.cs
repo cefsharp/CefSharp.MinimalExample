@@ -37,7 +37,7 @@ namespace CefSharp.MinimalExample.OffScreen
             var dependencyCheck = true;
 
 #if NETCOREAPP
-            //This should be fixed shortly.
+            //This should be fixed as part of https://github.com/cefsharp/CefSharp/issues/3388
             dependencyCheck = false;
 #endif
 
