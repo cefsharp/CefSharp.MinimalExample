@@ -62,7 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms.NetCore" Version="88.2.40-pre" />
+    <PackageReference Include="CefSharp.WinForms.NetCore" Version="88.2.90" />
   </ItemGroup>
   
   <Target Name="CefSharpAfterBuildDiagnostic" AfterTargets="AfterBuild">

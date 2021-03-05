@@ -33,8 +33,8 @@ namespace CefSharp.MinimalExample.Wpf
 
             var dependencyCheck = true;
 
-#if NETCOREAPP
-            //This should be fixed as part of https://github.com/cefsharp/CefSharp/issues/3388
+#if NETCOREAPP || ANYCPU
+            //For .Net Core/.Net 5 this should be fixed as part of https://github.com/cefsharp/CefSharp/issues/3388
             dependencyCheck = false;
 #endif
 
