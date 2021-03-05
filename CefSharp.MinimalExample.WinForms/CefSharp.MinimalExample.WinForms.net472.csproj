@@ -17,7 +17,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64</Platforms>
-	<ProjectGuid>{1D1D63D1-5257-4AA0-A284-7EF4574878CB}</ProjectGuid>
+    <ProjectGuid>{1D1D63D1-5257-4AA0-A284-7EF4574878CB}</ProjectGuid>
+    <StartupObject>CefSharp.MinimalExample.WinForms.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,11 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms" Version="87.1.132" />
+    <PackageReference Include="CefSharp.WinForms" Version="88.2.90" />
   </ItemGroup>
 
   <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
-    <CallTarget Targets="CefSharpAfterBuildDiagnostic"/>
+    <CallTarget Targets="CefSharpAfterBuildDiagnostic" />
   </Target>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
