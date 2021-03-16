@@ -16,9 +16,19 @@
     <RootNamespace>CefSharp.MinimalExample.WinForms</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Platforms>x86;x64</Platforms>
+    <Platforms>x86;x64;AnyCPU</Platforms>
     <ProjectGuid>{1D1D63D1-5257-4AA0-A284-7EF4574878CB}</ProjectGuid>
     <StartupObject>CefSharp.MinimalExample.WinForms.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Platform)' == 'AnyCPU'">
+    <DefineConstants>$(DefineConstants);ANYCPU</DefineConstants>
+    <!--
+    For versions 87 and 88 specify CefSharpPlatformTargetOverride when using AnyCPU.
+    For versions 89 and above use PlatformTarget (CefSharpPlatformTargetOverride will also still work)
+    -->
+    <!--<PlatformTarget>AnyCPU</PlatformTarget>-->
+    <CefSharpPlatformTargetOverride>AnyCPU</CefSharpPlatformTargetOverride>
   </PropertyGroup>
 
   <ItemGroup>
