@@ -34,15 +34,8 @@ namespace CefSharp.MinimalExample.OffScreen
                 CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
             };
 
-            var dependencyCheck = true;
-
-#if NETCOREAPP || ANYCPU
-            //For .Net Core/.Net 5 this should be fixed as part of https://github.com/cefsharp/CefSharp/issues/3388
-            dependencyCheck = false;
-#endif
-
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: dependencyCheck, browserProcessHandler: null);
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
 
             // Create the offscreen Chromium browser.
             browser = new ChromiumWebBrowser(testUrl);

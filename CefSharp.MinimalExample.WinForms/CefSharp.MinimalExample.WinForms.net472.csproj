@@ -27,8 +27,8 @@
     For versions 87 and 88 specify CefSharpPlatformTargetOverride when using AnyCPU.
     For versions 89 and above use PlatformTarget (CefSharpPlatformTargetOverride will also still work)
     -->
-    <!--<PlatformTarget>AnyCPU</PlatformTarget>-->
-    <CefSharpPlatformTargetOverride>AnyCPU</CefSharpPlatformTargetOverride>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <!--<CefSharpPlatformTargetOverride>AnyCPU</CefSharpPlatformTargetOverride>-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms" Version="88.2.90" />
+    <PackageReference Include="CefSharp.WinForms" Version="89.0.140-pre" />
   </ItemGroup>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
