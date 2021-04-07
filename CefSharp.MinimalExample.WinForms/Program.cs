@@ -41,15 +41,8 @@ namespace CefSharp.MinimalExample.WinForms
             //For screen sharing add (see https://bitbucket.org/chromiumembedded/cef/issues/2582/allow-run-time-handling-of-media-access#comment-58677180)
             settings.CefCommandLineArgs.Add("enable-usermedia-screen-capturing");
 
-            var dependencyCheck = true;
-
-#if NETCOREAPP || ANYCPU
-            //For .Net Core/.Net 5 this should be fixed as part of https://github.com/cefsharp/CefSharp/issues/3388
-            dependencyCheck = false;
-#endif
-
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: dependencyCheck, browserProcessHandler: null);
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
 
             var browser = new BrowserForm();
             Application.Run(browser);
