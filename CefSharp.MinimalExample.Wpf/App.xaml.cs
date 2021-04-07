@@ -37,7 +37,7 @@ namespace CefSharp.MinimalExample.Wpf
             if (!Cef.IsInitialized)
             {
                 //Perform dependency check to make sure all relevant resources are in our output directory.
-                Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
+                Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
             }
         }
 
