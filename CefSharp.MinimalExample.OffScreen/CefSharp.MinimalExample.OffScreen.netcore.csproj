@@ -49,6 +49,12 @@
   <ItemGroup>
     <PackageReference Include="CefSharp.OffScreen.NetCore" Version="91.1.210" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="crash_reporter.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 </Project>
