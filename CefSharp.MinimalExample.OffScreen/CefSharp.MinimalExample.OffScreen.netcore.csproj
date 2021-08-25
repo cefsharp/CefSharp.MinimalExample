@@ -21,6 +21,20 @@
         https://github.com/dotnet/docs/issues/12237
         -->
     <RollForward>Major</RollForward>
+    <StartupObject>CefSharp.MinimalExample.OffScreen.Program</StartupObject>
+  </PropertyGroup>
+
+  <!--
+  .Net 5.0 Publish Settings for PublishSingleFile
+  https://docs.microsoft.com/en-us/dotnet/core/deploying/single-file
+  Defaults differ compared to .Net Core 3.1
+  -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net5.0-windows' AND '$(PublishSingleFile)' == 'true'">
+    <!-- Extract all files to disk at runtime -->
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <!-- Include our native files in the resulting exe -->
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <StartupObject>CefSharp.MinimalExample.OffScreen.ProgramPublishSingleFile</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
