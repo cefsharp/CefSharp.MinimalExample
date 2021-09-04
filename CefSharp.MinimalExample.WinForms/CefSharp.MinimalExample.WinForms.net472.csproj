@@ -32,11 +32,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin.netcore\**" />
     <Compile Remove="bin\**" />
+    <Compile Remove="obj.netcore\**" />
     <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin.netcore\**" />
     <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj.netcore\**" />
     <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin.netcore\**" />
     <None Remove="bin\**" />
+    <None Remove="obj.netcore\**" />
     <None Remove="obj\**" />
   </ItemGroup>
 
