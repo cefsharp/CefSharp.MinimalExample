@@ -49,11 +49,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin.net472\**" />
     <Compile Remove="bin\**" />
+    <Compile Remove="obj.net472\**" />
     <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin.net472\**" />
     <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj.net472\**" />
     <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin.net472\**" />
     <None Remove="bin\**" />
+    <None Remove="obj.net472\**" />
     <None Remove="obj\**" />
   </ItemGroup>
 
@@ -70,19 +76,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  
-  <Target Name="CefSharpAfterBuildDiagnostic" AfterTargets="AfterBuild">
-    <Message Importance="high" Text="CefSharp After Build Diagnostic" />
-    <Message Importance="high" Text="RuntimeIdentifier = $(RuntimeIdentifier)" />
-    <Message Importance="high" Text="Platform = $(Platform)" />
-    <Message Importance="high" Text="PlatformName = $(PlatformName)" />
-    <Message Importance="high" Text="Platforms = $(Platforms)" />
-    <Message Importance="high" Text="PlatformTarget = $(PlatformTarget)" />
-    <Message Importance="high" Text="PlatformTargetAsMSBuildArchitecture = $(PlatformTargetAsMSBuildArchitecture)" />
-    <Message Importance="high" Text="TargetFramework = $(TargetFramework)" />
-    <Message Importance="high" Text="TargetFrameworkVersion = $(TargetFrameworkVersion)" />
-    <Message Importance="high" Text="NuGetProjectStyle = $(NuGetProjectStyle)" />
-    <Message Importance="high" Text="OutDir = $(OutDir)" />
+
+  <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
+    <CallTarget Targets="CefSharpAfterBuildDiagnostic" />
   </Target>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
