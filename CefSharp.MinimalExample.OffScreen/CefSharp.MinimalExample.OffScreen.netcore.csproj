@@ -61,7 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.OffScreen.NetCore" Version="92.0.260" />
+    <PackageReference Include="CefSharp.OffScreen.NetCore" Version="93.1.111" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,7 +71,7 @@
   </ItemGroup>
 
   <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
-    <CallTarget Targets="CefSharpAfterBuildDiagnostic"/>
+    <CallTarget Targets="CefSharpAfterBuildDiagnostic" />
   </Target>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
