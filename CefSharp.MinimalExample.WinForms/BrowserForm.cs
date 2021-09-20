@@ -11,13 +11,19 @@ namespace CefSharp.MinimalExample.WinForms
 {
     public partial class BrowserForm : Form
     {
+#if DEBUG
+        private const string Build = "Debug";
+#else
+        private const string Build = "Release";
+#endif
+        private string title = "CefSharp.MinimalExample.WinForms (" + Build + ")";
         private readonly ChromiumWebBrowser browser;
 
         public BrowserForm()
         {
             InitializeComponent();
 
-            Text = "CefSharp";
+            Text = title;
             WindowState = FormWindowState.Maximized;
 
             browser = new ChromiumWebBrowser("www.google.com");
@@ -74,7 +80,7 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void OnBrowserTitleChanged(object sender, TitleChangedEventArgs args)
         {
-            this.InvokeOnUiThreadIfRequired(() => Text = args.Title);
+            this.InvokeOnUiThreadIfRequired(() => Text = title + " - " + args.Title);
         }
 
         private void OnBrowserAddressChanged(object sender, AddressChangedEventArgs args)
