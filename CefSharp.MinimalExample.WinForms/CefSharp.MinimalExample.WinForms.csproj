@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\CefSharp.Common.93.1.140\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.93.1.140\build\CefSharp.Common.props')" />
-  <Import Project="..\packages\cef.redist.x86.93.1.14\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.93.1.14\build\cef.redist.x86.props')" />
-  <Import Project="..\packages\cef.redist.x64.93.1.14\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.93.1.14\build\cef.redist.x64.props')" />
+  <Import Project="..\packages\CefSharp.Common.94.3.0-pre\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.94.3.0-pre\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\cef.redist.x86.94.3.0\build\cef.redist.x86.props" Condition="Exists('..\packages\cef.redist.x86.94.3.0\build\cef.redist.x86.props')" />
+  <Import Project="..\packages\cef.redist.x64.94.3.0\build\cef.redist.x64.props" Condition="Exists('..\packages\cef.redist.x64.94.3.0\build\cef.redist.x64.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -72,16 +72,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CefSharp, Version=93.1.140.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
-      <HintPath>..\packages\CefSharp.Common.93.1.140\lib\net452\CefSharp.dll</HintPath>
+    <Reference Include="CefSharp, Version=94.3.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
+      <HintPath>..\packages\CefSharp.Common.94.3.0-pre\lib\net452\CefSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CefSharp.Core, Version=93.1.140.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
-      <HintPath>..\packages\CefSharp.Common.93.1.140\lib\net452\CefSharp.Core.dll</HintPath>
+    <Reference Include="CefSharp.Core, Version=94.3.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
+      <HintPath>..\packages\CefSharp.Common.94.3.0-pre\lib\net452\CefSharp.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CefSharp.WinForms, Version=93.1.140.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
-      <HintPath>..\packages\CefSharp.WinForms.93.1.140\lib\net452\CefSharp.WinForms.dll</HintPath>
+    <Reference Include="CefSharp.WinForms, Version=94.3.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
+      <HintPath>..\packages\CefSharp.WinForms.94.3.0-pre\lib\net452\CefSharp.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -144,5 +144,5 @@
   <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
     <CallTarget Targets="CefSharpAfterBuildDiagnostic" />
   </Target>
-  <Import Project="..\packages\CefSharp.Common.93.1.140\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.93.1.140\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.Common.94.3.0-pre\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.94.3.0-pre\build\CefSharp.Common.targets')" />
 </Project>
