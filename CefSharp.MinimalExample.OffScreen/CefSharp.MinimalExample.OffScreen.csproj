@@ -84,6 +84,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CefSharp.MinimalExample.OffScreen.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CefSharp, Version=95.7.141.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
       <HintPath>..\packages\CefSharp.Common.95.7.141\lib\net452\CefSharp.dll</HintPath>
@@ -103,8 +106,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleThreadSynchronizationContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
