@@ -16,7 +16,7 @@ namespace CefSharp.MinimalExample.WinForms
 #else
         private const string Build = "Release";
 #endif
-        private string title = "CefSharp.MinimalExample.WinForms (" + Build + ")";
+        private readonly string title = "CefSharp.MinimalExample.WinForms (" + Build + ")";
         private readonly ChromiumWebBrowser browser;
 
         public BrowserForm()

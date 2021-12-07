@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace CefSharp.MinimalExample.WinForms
 {
-    public class Program
+    public static class Program
     {
         [STAThread]
         public static int Main(string[] args)
