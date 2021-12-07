@@ -14,7 +14,7 @@ namespace CefSharp.MinimalExample.OffScreen
     /// <summary>
     /// CefSharp.OffScreen Minimal Example
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         /// Asynchronous demo using CefSharp.OffScreen
@@ -71,12 +71,12 @@ namespace CefSharp.MinimalExample.OffScreen
                         throw new Exception(string.Format("Page load failed with ErrorCode:{0}, HttpStatusCode:{1}", initialLoadResponse.ErrorCode, initialLoadResponse.HttpStatusCode));
                     }
 
-                    var response = await browser.EvaluateScriptAsync("document.querySelector('[name=q]').value = 'CefSharp Was Here!'");
+                    _ = await browser.EvaluateScriptAsync("document.querySelector('[name=q]').value = 'CefSharp Was Here!'");
 
                     //Give the browser a little time to render
                     await Task.Delay(500);
                     // Wait for the screenshot to be taken.
-                    var bitmap = await browser.ScreenshotAsync();
+                    var bitmapAsByteArray = await browser.CaptureScreenshotAsync();
 
                     // File path to save our screenshot e.g. C:\Users\{username}\Desktop\CefSharp screenshot.png
                     var screenshotPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "CefSharp screenshot.png");
@@ -84,13 +84,7 @@ namespace CefSharp.MinimalExample.OffScreen
                     Console.WriteLine();
                     Console.WriteLine("Screenshot ready. Saving to {0}", screenshotPath);
 
-                    // Save the Bitmap to the path.
-                    // The image type is auto-detected via the ".png" extension.
-                    bitmap.Save(screenshotPath);
-
-                    // We no longer need the Bitmap.
-                    // Dispose it to avoid keeping the memory alive. Especially important in 32-bit applications.
-                    bitmap.Dispose();
+                    File.WriteAllBytes(screenshotPath, bitmapAsByteArray);
 
                     Console.WriteLine("Screenshot saved. Launching your default image viewer...");
 
@@ -172,7 +166,7 @@ namespace CefSharp.MinimalExample.OffScreen
                         //Give the browser a little time to render
                         Thread.Sleep(500);
                         // Wait for the screenshot to be taken.
-                        var task = browser.ScreenshotAsync();
+                        var task = browser.CaptureScreenshotAsync();
                         task.ContinueWith(x =>
                         {
                             // File path to save our screenshot e.g. C:\Users\{username}\Desktop\CefSharp screenshot.png
@@ -181,13 +175,10 @@ namespace CefSharp.MinimalExample.OffScreen
                             Console.WriteLine();
                             Console.WriteLine("Screenshot ready. Saving to {0}", screenshotPath);
 
-                            // Save the Bitmap to the path.
-                            // The image type is auto-detected via the ".png" extension.
-                            task.Result.Save(screenshotPath);
+                            var bitmapAsByteArray = x.Result;
 
-                            // We no longer need the Bitmap.
-                            // Dispose it to avoid keeping the memory alive.  Especially important in 32-bit applications.
-                            task.Result.Dispose();
+                            // Save the Bitmap to the path.
+                            File.WriteAllBytes(screenshotPath, bitmapAsByteArray);
 
                             Console.WriteLine("Screenshot saved.  Launching your default image viewer...");
 
