@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<?define SOURCE=CefSharp.MinimalExample.Wpf\bin.netcore\Release\net5.0-windows?>
+	<?define Executable=CefSharp.MinimalExample.Wpf.netcore.exe?>
+</Include>
