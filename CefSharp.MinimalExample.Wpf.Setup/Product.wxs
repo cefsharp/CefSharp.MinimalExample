@@ -29,6 +29,8 @@
 			<UIRef Id="WixUI_Minimal"/>
 			<UIRef Id="WixUI_ErrorProgressText"/>
 		</UI>
+		
+		<util:CloseApplication Id="CloseMinimalExampleExe" Target="$(var.Executable)" Timeout="15" Sequence="1" EndSessionMessage="yes" PromptToContinue="no" RebootPrompt="no" />
 
 		<Feature 
 			Id="ProductFeature"
@@ -41,36 +43,23 @@
 			>
 			<ComponentGroupRef Id="AppComponents" />
 			<ComponentRef Id="MainExecutable" />
-			<ComponentRef Id="WERRegistryEntries"/>
 		</Feature>
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFiles64Folder">
 				<Directory Id="INSTALLFOLDER" Name="CefSharp.MinimalExample.Wpf.Setup" />
 			</Directory>
-			<Component Id="WERRegistryEntries" Guid="AE8AA71B-26A5-4BD4-99B0-9A96868B5D27" Win64="yes">
-				<RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\$(var.Executable)" ForceCreateOnInstall="yes">
-					<RegistryValue Type="string"
-									Name="DumpFolder"
-									Value="C:\CefExample\CrashDumps" />
-					<RegistryValue Type="integer"
-									Name="DumpCount"
-									Value="16" />
-					<RegistryValue Type="integer"
-									Name="DumpType"
-									Value="2" />
-				</RegistryKey>
-			</Component>
 		</Directory>
+		
+		<InstallExecuteSequence>
+			<Custom Action="WixCloseApplications" Before="CostFinalize"/>
+		</InstallExecuteSequence>
 	</Product>
 
 	<Fragment>
-
-		<CloseApplication Target="$(var.Executable)" />
 		<DirectoryRef Id="INSTALLFOLDER">
 			<Component Id="MainExecutable" Guid="C74254EA-FFE9-4401-AEE8-4A4A91A114D1" Win64="yes">
-				<File Id="EXAMPLEEXE" Name="$(var.Executable)" Source="$(var.SOURCE)\$(var.Executable)" KeyPath="yes">
-				</File>
+				<File Id="EXAMPLEEXE" Name="$(var.Executable)" Source="$(var.SOURCE)\$(var.Executable)" KeyPath="yes"/>
 			</Component>
 		</DirectoryRef>
 	</Fragment>
