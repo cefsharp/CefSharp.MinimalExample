@@ -6,6 +6,7 @@
         xmlns:behaviours="clr-namespace:CefSharp.MinimalExample.Wpf.Behaviours"
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
         Title="{Binding Path=Title, ElementName=Browser, Converter={StaticResource TitleConverter}}"
+        FocusManager.FocusedElement="{Binding ElementName=Browser}"
         WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
