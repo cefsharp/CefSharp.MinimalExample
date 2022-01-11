@@ -2,6 +2,7 @@
 //
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
+using CefSharp.DevTools.IO;
 using CefSharp.MinimalExample.WinForms.Controls;
 using CefSharp.WinForms;
 using System;
@@ -54,7 +55,7 @@ namespace CefSharp.MinimalExample.WinForms
             DisplayOutput(string.Format("{0}, {1}", version, environment));
         }
 
-        private async void OnBrowserLoadError(object sender, LoadErrorEventArgs e)
+        private void OnBrowserLoadError(object sender, LoadErrorEventArgs e)
         {
             //Actions that trigger a download will raise an aborted error.
             //Aborted is generally safe to ignore
@@ -63,23 +64,13 @@ namespace CefSharp.MinimalExample.WinForms
                 return;
             }
 
-            //using LoadHtml/LoadUrl creates an additional history entry that
-            //prevents the back button from working correctly.
-            //Use Devools Page.SetDocumentContent to change the content
-            using (var client = browser.GetDevToolsClient())
-            {
-                var response = await client.Page.GetFrameTreeAsync();
-                var frames = response.FrameTree;
-                var mainFrame = frames.Frame;
-
-                var errorHtml = string.Format("<html><body><h2>Failed to load URL {0} with error {1} ({2}).</h2></body></html>",
+            var errorHtml = string.Format("<html><body><h2>Failed to load URL {0} with error {1} ({2}).</h2></body></html>",
                                               e.FailedUrl, e.ErrorText, e.ErrorCode);
 
-                _ = client.Page.SetDocumentContentAsync(mainFrame.Id, errorHtml);
+            _ = e.Browser.SetMainFrameDocumentContentAsync(errorHtml);
 
-                //AddressChanged isn't called for failed Urls so we need to manually update the Url TextBox
-                this.InvokeOnUiThreadIfRequired(() => urlTextBox.Text = e.FailedUrl);
-            }
+            //AddressChanged isn't called for failed Urls so we need to manually update the Url TextBox
+            this.InvokeOnUiThreadIfRequired(() => urlTextBox.Text = e.FailedUrl);
         }
 
         private void OnIsBrowserInitializedChanged(object sender, EventArgs e)
