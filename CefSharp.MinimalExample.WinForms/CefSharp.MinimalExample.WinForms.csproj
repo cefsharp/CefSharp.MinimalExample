@@ -98,7 +98,15 @@
     <Compile Include="BrowserForm.Designer.cs">
       <DependentUpon>BrowserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChromiumHostControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChromiumWebBrowserEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ControlExtensions.cs" />
+    <Compile Include="IChromiumWebBrowserEx.cs" />
+    <Compile Include="LoadingProcessChangedEventArgs.cs" />
     <Compile Include="Program.cs">
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +115,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="DisplayHandlerEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BrowserForm.resx">

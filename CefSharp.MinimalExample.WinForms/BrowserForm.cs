@@ -3,9 +3,7 @@
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
 using CefSharp.MinimalExample.WinForms.Controls;
-using CefSharp.WinForms;
 using CefSharp.WinForms.Handler;
-using CefSharp.WinForms.Host;
 using System;
 using System.Windows.Forms;
 
@@ -18,26 +16,29 @@ namespace CefSharp.MinimalExample.WinForms
 #else
         private const string Build = "Release";
 #endif
-        private readonly string title = "CefSharp.MinimalExample.WinForms (" + Build + ")";
-        private readonly IChromiumWebBrowserBase _browser;
+        private readonly string _title = "CefSharp.MinimalExample.WinForms (" + Build + ")";
+        private readonly IChromiumWebBrowserEx _browser;
 
         public BrowserForm()
         {
             InitializeComponent();
 
-            Text = title;
+            Text = _title;
 
-            var browser = new ChromiumWebBrowser("https://cefsharp.github.io/demo/openpopup.html");
+            var browser = new ChromiumWebBrowserEx("https://cefsharp.github.io/demo/openpopup.html");
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
 			var popup = default(Form);
 
             browser.LifeSpanHandler = LifeSpanHandler
-				.Create()
+				.Create(() =>
+                {
+                    return new ChromiumHostControlEx();
+                })
 				.OnPopupCreated((control, url) =>
 				{
 					control.Dock = DockStyle.Fill;
-					popup = new BrowserForm(control)
+					popup = new BrowserForm((ChromiumHostControlEx)control)
                     {
                         Height = 450,
                         Width = 550
@@ -55,6 +56,8 @@ namespace CefSharp.MinimalExample.WinForms
 				})
 				.Build();
 
+            browser.DisplayHandler = new DisplayHandlerEx();
+
             browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
             browser.LoadingStateChanged += OnLoadingStateChanged;
             browser.ConsoleMessage += OnBrowserConsoleMessage;
@@ -62,15 +65,16 @@ namespace CefSharp.MinimalExample.WinForms
             browser.TitleChanged += OnBrowserTitleChanged;
             browser.AddressChanged += OnBrowserAddressChanged;
             browser.LoadError += OnBrowserLoadError;
+            browser.LoadingProcessChanged += OnLoadingProgressChanged;
 
             _browser = browser;
         }
 
-        public BrowserForm(ChromiumHostControl chromiumHostControl)
+        public BrowserForm(ChromiumHostControlEx chromiumHostControl)
         {
             InitializeComponent();
 
-            Text = title;
+            Text = _title;
 
             _browser = chromiumHostControl;
             toolStripContainer.ContentPanel.Controls.Add(chromiumHostControl);
@@ -82,6 +86,7 @@ namespace CefSharp.MinimalExample.WinForms
             chromiumHostControl.TitleChanged += OnBrowserTitleChanged;
             chromiumHostControl.AddressChanged += OnBrowserAddressChanged;
             chromiumHostControl.LoadError += OnBrowserLoadError;
+            chromiumHostControl.LoadingProcessChanged += OnLoadingProgressChanged;
 
             FormInitialize();
         }
@@ -106,6 +111,20 @@ namespace CefSharp.MinimalExample.WinForms
 #endif
 
             DisplayOutput(string.Format("{0}, {1}", version, environment));
+        }
+
+        private void OnLoadingProgressChanged(object sender, LoadingProcessChangedEventArgs e)
+        {
+            var progress = Math.Round(e.Progress * 100, 0);
+
+            if (progress > 99)
+            {
+                DisplayOutput("Loading Complete");
+            }
+            else
+            {
+                DisplayOutput("Loading " + progress + "%");
+            }
         }
 
         private void OnBrowserLoadError(object sender, LoadErrorEventArgs e)
@@ -153,7 +172,7 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void OnBrowserTitleChanged(object sender, TitleChangedEventArgs args)
         {
-            this.InvokeOnUiThreadIfRequired(() => Text = title + " - " + args.Title);
+            this.InvokeOnUiThreadIfRequired(() => Text = _title + " - " + args.Title);
         }
 
         private void OnBrowserAddressChanged(object sender, AddressChangedEventArgs args)
