@@ -1,8 +1,7 @@
-﻿// Copyright © 2010-2015 The CefSharp Authors. All rights reserved.
+﻿// Copyright © 2010-2022 The CefSharp Authors. All rights reserved.
 //
 // Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 
-using CefSharp.DevTools.IO;
 using CefSharp.MinimalExample.WinForms.Controls;
 using CefSharp.WinForms;
 using CefSharp.WinForms.Handler;
@@ -20,7 +19,7 @@ namespace CefSharp.MinimalExample.WinForms
         private const string Build = "Release";
 #endif
         private readonly string title = "CefSharp.MinimalExample.WinForms (" + Build + ")";
-        private readonly ChromiumWebBrowser browser;
+        private readonly IChromiumWebBrowserBase _browser;
 
         public BrowserForm()
         {
@@ -28,25 +27,24 @@ namespace CefSharp.MinimalExample.WinForms
 
             Text = title;
 
-            browser = new ChromiumWebBrowser("www.google.com");
+            var browser = new ChromiumWebBrowser("https://cefsharp.github.io/demo/openpopup.html");
             toolStripContainer.ContentPanel.Controls.Add(browser);
 
 			var popup = default(Form);
 
-			browser.LifeSpanHandler = LifeSpanHandler
+            browser.LifeSpanHandler = LifeSpanHandler
 				.Create()
-				.OnBeforePopupCreated((webbrowser, browser, frame, url, name, disposition, userGesture, settings) =>
-				{
-					return PopupCreation.Continue;
-				})
 				.OnPopupCreated((control, url) =>
 				{
 					control.Dock = DockStyle.Fill;
-					popup = new BrowserForm { Text = "Popup", Height = 450, Width = 550 };
-					popup.Controls.Add(control);
+					popup = new BrowserForm(control)
+                    {
+                        Height = 450,
+                        Width = 550
+                    };
 					popup.Show();
 				})
-				.OnPopupDestroyed((control, browser) =>
+				.OnPopupDestroyed((control, b) =>
 				{
 					popup.Close();
 
@@ -57,7 +55,7 @@ namespace CefSharp.MinimalExample.WinForms
 				})
 				.Build();
 
-			browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
+            browser.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
             browser.LoadingStateChanged += OnLoadingStateChanged;
             browser.ConsoleMessage += OnBrowserConsoleMessage;
             browser.StatusMessage += OnBrowserStatusMessage;
@@ -65,6 +63,34 @@ namespace CefSharp.MinimalExample.WinForms
             browser.AddressChanged += OnBrowserAddressChanged;
             browser.LoadError += OnBrowserLoadError;
 
+            _browser = browser;
+        }
+
+        public BrowserForm(ChromiumHostControl chromiumHostControl)
+        {
+            InitializeComponent();
+
+            Text = title;
+
+            _browser = chromiumHostControl;
+            toolStripContainer.ContentPanel.Controls.Add(chromiumHostControl);
+
+            chromiumHostControl.IsBrowserInitializedChanged += OnIsBrowserInitializedChanged;
+            chromiumHostControl.LoadingStateChanged += OnLoadingStateChanged;
+            chromiumHostControl.ConsoleMessage += OnBrowserConsoleMessage;
+            chromiumHostControl.StatusMessage += OnBrowserStatusMessage;
+            chromiumHostControl.TitleChanged += OnBrowserTitleChanged;
+            chromiumHostControl.AddressChanged += OnBrowserAddressChanged;
+            chromiumHostControl.LoadError += OnBrowserLoadError;
+
+            FormInitialize();
+        }
+
+        /// <summary>
+        /// Common form initialize code
+        /// </summary>
+        private void FormInitialize()
+        {
             var version = string.Format("Chromium: {0}, CEF: {1}, CefSharp: {2}",
                Cef.ChromiumVersion, Cef.CefVersion, Cef.CefSharpVersion);
 
@@ -102,7 +128,7 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void OnIsBrowserInitializedChanged(object sender, EventArgs e)
         {
-            var b = ((ChromiumWebBrowser)sender);
+            var b = ((Control)sender);
 
             this.InvokeOnUiThreadIfRequired(() => b.Focus());
         }
@@ -182,7 +208,7 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void ExitMenuItemClick(object sender, EventArgs e)
         {
-            browser.Dispose();
+            _browser.Dispose();
             Cef.Shutdown();
             Close();
         }
@@ -194,12 +220,12 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void BackButtonClick(object sender, EventArgs e)
         {
-            browser.Back();
+            _browser.Back();
         }
 
         private void ForwardButtonClick(object sender, EventArgs e)
         {
-            browser.Forward();
+            _browser.Forward();
         }
 
         private void UrlTextBoxKeyUp(object sender, KeyEventArgs e)
@@ -216,13 +242,13 @@ namespace CefSharp.MinimalExample.WinForms
         {
             if (Uri.IsWellFormedUriString(url, UriKind.RelativeOrAbsolute))
             {
-                browser.Load(url);
+                _browser.LoadUrl(url);
             }
         }
 
         private void ShowDevToolsMenuItemClick(object sender, EventArgs e)
         {
-            browser.ShowDevTools();
+            _browser.ShowDevTools();
         }
     }
 }
