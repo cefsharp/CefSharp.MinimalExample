@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!-- Note: We cannot use the recommended style of specifying <Project Sdk=...> because we need
+       to set BaseIntermediateOutputPath and BaseOutputPath before the SDK props are imported. -->
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>obj.net472\</BaseIntermediateOutputPath>
+    <BaseOutputPath>bin.net472\</BaseOutputPath>
+  </PropertyGroup>
+
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <UseWpf>true</UseWpf>
+    <RootNamespace>CefSharp.MinimalExample.Wpf</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Platforms>x86;x64;AnyCPU</Platforms>
+    <StartupObject>CefSharp.MinimalExample.Wpf.App</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Platform)' == 'AnyCPU'">
+    <DefineConstants>$(DefineConstants);ANYCPU</DefineConstants>
+    <!--
+    For versions 87 and 88 specify CefSharpPlatformTargetOverride when using AnyCPU.
+    For versions 89 and above use PlatformTarget (CefSharpPlatformTargetOverride will also still work)
+    -->
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <!--<CefSharpPlatformTargetOverride>AnyCPU</CefSharpPlatformTargetOverride>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin.netcore\**" />
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj.netcore\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin.netcore\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj.netcore\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin.netcore\**" />
+    <None Remove="bin\**" />
+    <None Remove="obj.netcore\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf" Version="98.1.210" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+  </ItemGroup>
+  
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
+
+  <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
+    <CallTarget Targets="CefSharpAfterBuildDiagnostic" />
+  </Target>
+</Project>
