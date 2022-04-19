@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms" Version="100.0.140" />
+    <PackageReference Include="CefSharp.WinForms" Version="100.0.230" />
   </ItemGroup>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
