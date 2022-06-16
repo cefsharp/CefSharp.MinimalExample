@@ -39,6 +39,15 @@
     <StartupObject>CefSharp.MinimalExample.WinForms.ProgramPublishSingleFile</StartupObject>
   </PropertyGroup>
 
+  <!--
+  For SelfContained we'll self host the BrowserSubprocess (use the applications own exe)
+  Instead of the provdied CefSharp.BrowserSubprocess.exe
+  -->
+  <PropertyGroup Condition="('$(TargetFramework)' == 'net5.0-windows' OR '$(TargetFramework)' == 'net6.0-windows') AND '$(SelfContained)' == 'true'">
+    <StartupObject>CefSharp.MinimalExample.WinForms.ProgramPublishSingleFile</StartupObject>
+    <CefSharpExcludeSubProcessExe>true</CefSharpExcludeSubProcessExe>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(PlatformTarget)' == 'x86'">
     <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x86</RuntimeIdentifier>
     <SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>

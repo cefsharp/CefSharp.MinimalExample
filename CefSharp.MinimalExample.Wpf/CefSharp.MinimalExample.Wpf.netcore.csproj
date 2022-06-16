@@ -49,6 +49,15 @@
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <StartupObject>CefSharp.MinimalExample.Wpf.ProgramPublishSingleFile</StartupObject>
   </PropertyGroup>
+
+  <!--
+  For SelfContained we'll self host the BrowserSubprocess (use the applications own exe)
+  Instead of the provdied CefSharp.BrowserSubprocess.exe
+  -->
+  <PropertyGroup Condition="('$(TargetFramework)' == 'net5.0-windows' OR '$(TargetFramework)' == 'net6.0-windows') AND '$(SelfContained)' == 'true'">
+    <StartupObject>CefSharp.MinimalExample.Wpf.ProgramPublishSingleFile</StartupObject>
+    <CefSharpExcludeSubProcessExe>true</CefSharpExcludeSubProcessExe>
+  </PropertyGroup>
   
   <ItemGroup>
     <Compile Remove="bin\**" />
