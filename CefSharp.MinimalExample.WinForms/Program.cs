@@ -19,7 +19,10 @@ namespace CefSharp.MinimalExample.WinForms
             CefRuntime.SubscribeAnyCpuAssemblyResolver();
 #endif
 
-            //For Windows 7 and above, best to include relevant app.manifest entries as well
+            // Programmatically enable DPI Aweness
+            // Can also be done via app.manifest or app.config
+            // https://github.com/cefsharp/CefSharp/wiki/General-Usage#high-dpi-displayssupport
+            // If set via app.manifest this call will have no effect.
             Cef.EnableHighDPISupport();
 
             var settings = new CefSettings()
