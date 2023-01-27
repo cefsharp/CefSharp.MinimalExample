@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace CefSharp.MinimalExample.WinForms
 {
     /// <summary>
-    /// For .Net 5.0 Publishing Single File exe requires using your own applications executable to
+    /// For .Net 5.0/6.0/7.0 Publishing Single File exe requires using your own applications executable to
     /// act as the BrowserSubProcess. See https://github.com/cefsharp/CefSharp/issues/3407
     /// for further details. <see cref="Program.Main(string[])"/> for the default main application entry point
     /// </summary>
@@ -20,8 +20,8 @@ namespace CefSharp.MinimalExample.WinForms
         public static int Main(string[] args)
         {
             //To support High DPI this must be before CefSharp.BrowserSubprocess.SelfHost.Main so the BrowserSubprocess is DPI Aware
-            Cef.EnableHighDPISupport();
-
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
+            
             var exitCode = CefSharp.BrowserSubprocess.SelfHost.Main(args);
 
             if (exitCode >= 0)
@@ -52,6 +52,7 @@ namespace CefSharp.MinimalExample.WinForms
             Cef.Initialize(settings, performDependencyCheck: false);
 
             var browser = new BrowserForm();
+            Application.EnableVisualStyles();
             Application.Run(browser);
 
             return 0;

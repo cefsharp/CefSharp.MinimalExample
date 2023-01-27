@@ -38,15 +38,17 @@
   </PropertyGroup>
   
   <!--
-  .Net 5.0 Publish Settings for PublishSingleFile
+  .Net 5.0+ Publish Settings for PublishSingleFile
   https://docs.microsoft.com/en-us/dotnet/core/deploying/single-file
   Defaults differ compared to .Net Core 3.1
   -->
-  <PropertyGroup Condition="('$(TargetFramework)' == 'net5.0-windows' OR '$(TargetFramework)' == 'net6.0-windows') AND '$(PublishSingleFile)' == 'true'">
+  <PropertyGroup Condition="'$(TargetFramework)' != 'netcoreapp3.1' AND '$(PublishSingleFile)' == 'true'">
     <!-- Extract all files to disk at runtime -->
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
     <!-- Include our native files in the resulting exe -->
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <!-- .Net 6.0+ supports compression -->
+    <!--<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>-->
     <StartupObject>CefSharp.MinimalExample.Wpf.ProgramPublishSingleFile</StartupObject>
   </PropertyGroup>
 

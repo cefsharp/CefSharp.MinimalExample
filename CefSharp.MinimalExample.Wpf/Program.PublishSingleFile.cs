@@ -9,7 +9,7 @@ using System.IO;
 namespace CefSharp.MinimalExample.Wpf
 {
     /// <summary>
-    /// For .Net 5.0 Publishing Single File exe requires using your own applications executable to
+    /// For .Net 5.0/6.0/7.0 Publishing Single File exe requires using your own applications executable to
     /// act as the BrowserSubProcess. See https://github.com/cefsharp/CefSharp/issues/3407
     /// for further details. <see cref="Program.Main(string[])"/> for the default main application entry point
     /// </summary>
@@ -18,7 +18,8 @@ namespace CefSharp.MinimalExample.Wpf
         [STAThread]
         public static int Main(string[] args)
         {
-            //To support High DPI this must be before CefSharp.BrowserSubprocess.SelfHost.Main so the BrowserSubprocess is DPI Aware
+            // To support High DPI this must be before CefSharp.BrowserSubprocess.SelfHost.Main so the BrowserSubprocess is DPI Aware
+            // Alternatively set DPI Awareness in your app.manifest
             Cef.EnableHighDPISupport();
 
             var exitCode = CefSharp.BrowserSubprocess.SelfHost.Main(args);
