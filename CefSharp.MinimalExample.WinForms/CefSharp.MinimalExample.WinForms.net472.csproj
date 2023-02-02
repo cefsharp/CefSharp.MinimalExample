@@ -44,6 +44,8 @@
     <None Remove="bin\**" />
     <None Remove="obj.netcore\**" />
     <None Remove="obj\**" />
+  
+    <Compile Remove="Program.PublishSingleFile.cs" />
   </ItemGroup>
 
   <ItemGroup>
