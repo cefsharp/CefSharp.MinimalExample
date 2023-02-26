@@ -43,7 +43,12 @@
     <None Remove="bin\**" />
     <None Remove="obj.netcore\**" />
     <None Remove="obj\**" />
-  
+    <Compile Remove="Program.PublishSingleFile.cs" />
+    <None Remove="packages.config" />
+
+    <None Update="crash_reporter.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>  
   </ItemGroup>
 
   <ItemGroup>
