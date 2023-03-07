@@ -19,12 +19,6 @@ namespace CefSharp.MinimalExample.WinForms
             CefRuntime.SubscribeAnyCpuAssemblyResolver();
 #endif
 
-            // Programmatically enable DPI Aweness
-            // Can also be done via app.manifest or app.config
-            // https://github.com/cefsharp/CefSharp/wiki/General-Usage#high-dpi-displayssupport
-            // If set via app.manifest this call will have no effect.
-            Cef.EnableHighDPISupport();
-
             var settings = new CefSettings()
             {
                 //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
@@ -46,8 +40,8 @@ namespace CefSharp.MinimalExample.WinForms
             //Perform dependency check to make sure all relevant resources are in our output directory.
             Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
-            var browser = new BrowserForm();
-            Application.Run(browser);
+            Application.EnableVisualStyles();
+            Application.Run(new BrowserForm());
 
             return 0;
         }
