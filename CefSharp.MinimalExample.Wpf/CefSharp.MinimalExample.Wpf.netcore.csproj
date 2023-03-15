@@ -62,13 +62,21 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <Compile Remove="bin.net472\**" />
     <Compile Remove="bin\**" />
+    <Compile Remove="obj.net472\**" />
     <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin.net472\**" />
     <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj.net472\**" />
     <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin.net472\**" />
     <None Remove="bin\**" />
+    <None Remove="obj.net472\**" />
     <None Remove="obj\**" />
+    <Page Remove="bin.net472\**" />
     <Page Remove="bin\**" />
+    <Page Remove="obj.net472\**" />
     <Page Remove="obj\**" />
   </ItemGroup>
   
