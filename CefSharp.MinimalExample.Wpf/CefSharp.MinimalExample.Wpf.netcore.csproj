@@ -13,6 +13,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFrameworks>netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <TargetFrameworks Condition="'$(VisualStudioVersion)'=='17.0'">$(TargetFrameworks);net6.0-windows</TargetFrameworks>
+    <TargetFrameworks Condition="'$(NETCoreAppMaximumVersion)'=='7.0'">$(TargetFrameworks);net7.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <RootNamespace>CefSharp.MinimalExample.Wpf</RootNamespace>
     <ApplicationIcon>chromium-256.ico</ApplicationIcon>
@@ -56,7 +57,7 @@
   For SelfContained we'll self host the BrowserSubprocess (use the applications own exe)
   Instead of the provdied CefSharp.BrowserSubprocess.exe
   -->
-  <PropertyGroup Condition="('$(TargetFramework)' == 'net5.0-windows' OR '$(TargetFramework)' == 'net6.0-windows') AND '$(SelfContained)' == 'true'">
+  <PropertyGroup Condition="('$(TargetFramework)' == 'net5.0-windows' OR '$(TargetFramework)' == 'net6.0-windows' OR '$(TargetFramework)' == 'net7.0-windows') AND '$(SelfContained)' == 'true'">
     <StartupObject>CefSharp.MinimalExample.Wpf.ProgramPublishSingleFile</StartupObject>
     <CefSharpExcludeSubProcessExe>true</CefSharpExcludeSubProcessExe>
   </PropertyGroup>
