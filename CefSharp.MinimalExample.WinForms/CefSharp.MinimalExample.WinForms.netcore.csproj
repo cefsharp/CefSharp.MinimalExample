@@ -80,7 +80,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms.NetCore" Version="111.2.20" />
+    <PackageReference Include="CefSharp.WinForms.NetCore" Version="111.2.70" />
   </ItemGroup>
 
   <ItemGroup>
