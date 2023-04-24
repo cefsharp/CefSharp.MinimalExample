@@ -18,10 +18,6 @@ namespace CefSharp.MinimalExample.Wpf
         [STAThread]
         public static int Main(string[] args)
         {
-            // To support High DPI this must be before CefSharp.BrowserSubprocess.SelfHost.Main so the BrowserSubprocess is DPI Aware
-            // Alternatively set DPI Awareness in your app.manifest
-            Cef.EnableHighDPISupport();
-
             var exitCode = CefSharp.BrowserSubprocess.SelfHost.Main(args);
 
             if (exitCode >= 0)
