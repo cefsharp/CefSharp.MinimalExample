@@ -17,19 +17,23 @@ For a more complete example of each project see the main `CefSharp` repository.
 
 ## .NET Core support
 
-For `.Net Core 3.1/Net 5/6/7` use the following packages:
-- https://www.nuget.org/packages/CefSharp.WinForms.NETCore
-- https://www.nuget.org/packages/CefSharp.Wpf.NETCore
-- https://www.nuget.org/packages/CefSharp.OffScreen.NETCore
-- Publish Example
-  - x86: `dotnet publish -f netcoreapp3.1 -r win-x86
-  - x64: `dotnet publish -f netcoreapp3.1 -r win-x64
+For **.Net Core 3.1/Net 5/6/7** follow the [Quick Start](https://github.com/cefsharp/CefSharp/wiki/Quick-Start-For-MS-.Net-5.0-or-greater).
 
-It is possible to publish the application as single EXE file by adding `-p:PublishSingleFile=true`.
+**Publish Example**
+```
+# Publish x86
+dotnet publish -f netcoreapp3.1 -r win-x86
+# Publish x64
+dotnet publish -f netcoreapp3.1 -r win-x64
+# Publish using current runtime identifier https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
+dotnet publish -f netcoreapp3.1 --use-current-runtime
+```
 
-Any problems please report them on https://github.com/cefsharp/CefSharp/issues/3197
+For publishing as single file you need to [Self Host the BrowserSubProcess](https://github.com/cefsharp/CefSharp/wiki/SelfHost-BrowserSubProcess), more details in https://github.com/cefsharp/CefSharp/issues/3407#issuecomment-787008626
+
+Any problems please report them on https://github.com/cefsharp/CefSharp/discussions
 
 ## .NET 5/6/7 Support
 
-The same packages listed above in the .Net Core section should be used for .Net 5.0/6.0/7.0
+For **.Net 5/6/7** follow the [Quick Start](https://github.com/cefsharp/CefSharp/wiki/Quick-Start-For-MS-.Net-5.0-or-greater).
 
