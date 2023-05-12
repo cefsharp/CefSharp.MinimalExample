@@ -1,4 +1,4 @@
-SET cefsharpversion=112.3.0
+SET cefsharpversion=113.1.40
 
 ..\nuget restore CefSharp.MinimalExample.sln
 
