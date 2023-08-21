@@ -45,7 +45,7 @@ namespace CefSharp.MinimalExample.Wpf
             settings.CefCommandLineArgs.Add("enable-usermedia-screen-capturing");
 
             //Don't perform a dependency check
-            //By default this example calls Cef.Initialzie in the CefSharp.MinimalExample.Wpf.App
+            //By default this example calls Cef.Initialize in the CefSharp.MinimalExample.Wpf.App
             //constructor for purposes of providing a self contained single file example we call it here.
             //You could remove this code and use the CefSharp.MinimalExample.Wpf.App example if you 
             //set BrowserSubprocessPath to an absolute path to your main application exe.
