@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms" Version="118.6.80" />
+    <PackageReference Include="CefSharp.WinForms" Version="119.1.20" />
   </ItemGroup>
 
   <ItemGroup>
