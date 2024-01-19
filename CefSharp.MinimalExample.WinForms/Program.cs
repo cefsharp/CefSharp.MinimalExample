@@ -38,7 +38,14 @@ namespace CefSharp.MinimalExample.WinForms
             settings.CefCommandLineArgs.Add("enable-usermedia-screen-capturing");
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+            var initialized = Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
+
+            if (!initialized)
+            {
+                MessageBox.Show("Cef.Initialized failed, check the log file for more details.");
+
+                return 0;
+            }
 
             Application.EnableVisualStyles();
             Application.Run(new BrowserForm());
