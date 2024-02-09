@@ -52,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.OffScreen" Version="121.3.70-RCI4938" />
+    <PackageReference Include="CefSharp.OffScreen" Version="121.3.70" />
   </ItemGroup>
   
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
