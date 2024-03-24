@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\CefSharp.Common.122.1.120\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.122.1.120\build\CefSharp.Common.props')" />
-  <Import Project="..\packages\chromiumembeddedframework.runtime.win-x86.122.1.12\build\chromiumembeddedframework.runtime.win-x86.props" Condition="Exists('..\packages\chromiumembeddedframework.runtime.win-x86.122.1.12\build\chromiumembeddedframework.runtime.win-x86.props')" />
-  <Import Project="..\packages\chromiumembeddedframework.runtime.win-x64.122.1.12\build\chromiumembeddedframework.runtime.win-x64.props" Condition="Exists('..\packages\chromiumembeddedframework.runtime.win-x64.122.1.12\build\chromiumembeddedframework.runtime.win-x64.props')" />
+  <Import Project="..\packages\CefSharp.Common.123.0.60\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.123.0.60\build\CefSharp.Common.props')" />
+  <Import Project="..\packages\chromiumembeddedframework.runtime.win-x86.123.0.6\build\chromiumembeddedframework.runtime.win-x86.props" Condition="Exists('..\packages\chromiumembeddedframework.runtime.win-x86.123.0.6\build\chromiumembeddedframework.runtime.win-x86.props')" />
+  <Import Project="..\packages\chromiumembeddedframework.runtime.win-x64.123.0.6\build\chromiumembeddedframework.runtime.win-x64.props" Condition="Exists('..\packages\chromiumembeddedframework.runtime.win-x64.123.0.6\build\chromiumembeddedframework.runtime.win-x64.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -72,16 +72,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CefSharp, Version=122.1.120.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
-      <HintPath>..\packages\CefSharp.Common.122.1.120\lib\net462\CefSharp.dll</HintPath>
+    <Reference Include="CefSharp, Version=123.0.60.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
+      <HintPath>..\packages\CefSharp.Common.123.0.60\lib\net462\CefSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CefSharp.Core, Version=122.1.120.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
-      <HintPath>..\packages\CefSharp.Common.122.1.120\lib\net462\CefSharp.Core.dll</HintPath>
+    <Reference Include="CefSharp.Core, Version=123.0.60.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
+      <HintPath>..\packages\CefSharp.Common.123.0.60\lib\net462\CefSharp.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CefSharp.WinForms, Version=122.1.120.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
-      <HintPath>..\packages\CefSharp.WinForms.122.1.120\lib\net462\CefSharp.WinForms.dll</HintPath>
+    <Reference Include="CefSharp.WinForms, Version=123.0.60.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138">
+      <HintPath>..\packages\CefSharp.WinForms.123.0.60\lib\net462\CefSharp.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -144,5 +144,5 @@
   <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
     <CallTarget Targets="CefSharpAfterBuildDiagnostic" />
   </Target>
-  <Import Project="..\packages\CefSharp.Common.122.1.120\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.122.1.120\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.Common.123.0.60\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.123.0.60\build\CefSharp.Common.targets')" />
 </Project>
