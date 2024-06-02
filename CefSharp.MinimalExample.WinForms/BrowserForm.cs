@@ -156,6 +156,7 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void ExitMenuItemClick(object sender, EventArgs e)
         {
+            toolStripContainer.ContentPanel.Controls.Remove(browser);
             browser.Dispose();
             Cef.Shutdown();
             Close();
