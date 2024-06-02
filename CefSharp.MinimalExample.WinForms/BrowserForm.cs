@@ -156,6 +156,10 @@ namespace CefSharp.MinimalExample.WinForms
 
         private void ExitMenuItemClick(object sender, EventArgs e)
         {
+            // Prevent a race condition where browser.Dispose tears down it's control
+            // (before all browser cleanup has finished)
+            // https://github.com/cefsharp/CefSharp/issues/1574
+            // There are better/more complicated ways to handle this too
             toolStripContainer.ContentPanel.Controls.Remove(browser);
             browser.Dispose();
             Cef.Shutdown();
