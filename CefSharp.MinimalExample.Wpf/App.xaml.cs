@@ -34,7 +34,7 @@ namespace CefSharp.MinimalExample.Wpf
             //Example of checking if a call to Cef.Initialize has already been made, we require this for
             //our .Net 5.0 Single File Publish example, you don't typically need to perform this check
             //if you call Cef.Initialze within your WPF App constructor.
-            if (!Cef.IsInitialized)
+            if (Cef.IsInitialized == null)
             {
                 //Perform dependency check to make sure all relevant resources are in our output directory.
                 var initialized = Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
