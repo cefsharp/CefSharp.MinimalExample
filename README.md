@@ -11,7 +11,7 @@ This project includes examples for
 |--------|--------|--------|
 | [CefSharp.MinimalExample.sln](https://github.com/cefsharp/CefSharp.MinimalExample/blob/master/CefSharp.MinimalExample.sln)         | .Net 4.5.2 | Older Non-SDK Style projects that target .Net 4.5.2 and use packages.config |
 | [CefSharp.MinimalExample.net472.sln](https://github.com/cefsharp/CefSharp.MinimalExample/blob/master/CefSharp.MinimalExample.net472.sln)  | .Net 4.7.2 | Newer SDK Style projects that target .Net 4.7.2 and use PackageReference |
-| [CefSharp.MinimalExample.netcore.sln](https://github.com/cefsharp/CefSharp.MinimalExample/blob/master/CefSharp.MinimalExample.netcore.sln) | .Net Core 3.1/5.0/6.0/7.0 | Newer SDK Stlye projects that target .Net Core 3.1, .Net 5.0, .Net 6.0 and .Net 7.0 using PackageReference | 
+| [CefSharp.MinimalExample.netcore.sln](https://github.com/cefsharp/CefSharp.MinimalExample/blob/master/CefSharp.MinimalExample.netcore.sln) | .Net Core 3.1/5.0/6.0/7.0 | Newer SDK Style projects that target .Net Core 3.1, .Net 5.0, .Net 6.0 and .Net 7.0 using PackageReference | 
  
 For a more complete example of each project see the main `CefSharp` repository.
 
