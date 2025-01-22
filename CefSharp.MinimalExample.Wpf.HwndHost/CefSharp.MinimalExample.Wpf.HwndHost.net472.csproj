@@ -7,17 +7,17 @@
     <BaseOutputPath>bin.net472\</BaseOutputPath>
   </PropertyGroup>
 
-  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
+  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net472</TargetFramework>
-    <RootNamespace>CefSharp.MinimalExample.OffScreen</RootNamespace>
+    <UseWpf>true</UseWpf>
+    <RootNamespace>CefSharp.MinimalExample.Wpf.HwndHost</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64;AnyCPU</Platforms>
-    <ProjectGuid>{A4DEB90C-A529-4A93-ACE3-226A39EFCB00}</ProjectGuid>
-    <StartupObject>CefSharp.MinimalExample.OffScreen.Program</StartupObject>
+    <StartupObject>CefSharp.MinimalExample.Wpf.HwndHost.App</StartupObject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Platform)' == 'AnyCPU'">
@@ -43,19 +43,26 @@
     <None Remove="bin\**" />
     <None Remove="obj.netcore\**" />
     <None Remove="obj\**" />
-    <Compile Remove="Program.PublishSingleFile.cs" />
-    <None Remove="packages.config" />
 
-    <None Update="crash_reporter.cfg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>  
+    <Compile Remove="Program.PublishSingleFile.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.OffScreen" Version="131.3.10-CI5146" />
+    <None Remove="packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf.HwndHost" Version="131.3.10-CI5146" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="crash_reporter.cfg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   
-  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
+  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk.WindowsDesktop" />
 
   <Target Name="CefSharpAfterBuildDebug" AfterTargets="AfterBuild">
     <CallTarget Targets="CefSharpAfterBuildDiagnostic" />
