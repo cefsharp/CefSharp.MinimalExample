@@ -9,9 +9,11 @@ SET cefsharpversion=131.3.10-CI5146
 dotnet add CefSharp.MinimalExample.OffScreen\CefSharp.MinimalExample.OffScreen.net472.csproj package CefSharp.OffScreen -v %cefsharpversion%
 dotnet add CefSharp.MinimalExample.WinForms\CefSharp.MinimalExample.WinForms.net472.csproj package CefSharp.WinForms -v %cefsharpversion%
 dotnet add CefSharp.MinimalExample.Wpf\CefSharp.MinimalExample.Wpf.net472.csproj package CefSharp.Wpf -v %cefsharpversion%
+dotnet add CefSharp.MinimalExample.Wpf\CefSharp.MinimalExample.Wpf.HwndHost.net472.csproj package CefSharp.Wpf.HwndHost -v %cefsharpversion%
 
 dotnet add CefSharp.MinimalExample.OffScreen\CefSharp.MinimalExample.OffScreen.netcore.csproj package CefSharp.OffScreen.NetCore -v %cefsharpversion%
 dotnet add CefSharp.MinimalExample.WinForms\CefSharp.MinimalExample.WinForms.netcore.csproj package CefSharp.WinForms.NetCore -v %cefsharpversion%
 dotnet add CefSharp.MinimalExample.Wpf\CefSharp.MinimalExample.Wpf.netcore.csproj package CefSharp.Wpf.NetCore -v %cefsharpversion%
+dotnet add CefSharp.MinimalExample.Wpf\CefSharp.MinimalExample.Wpf.HwndHost.netcore.csproj package CefSharp.Wpf.HwndHost -v %cefsharpversion%
 
 pause
