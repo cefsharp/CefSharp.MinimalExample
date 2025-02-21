@@ -9,11 +9,10 @@ namespace CefSharp.MinimalExample.Wpf
     {
         public App()
         {
+            var cachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache");
 #if ANYCPU
             //Only required for PlatformTarget of AnyCPU
             CefRuntime.SubscribeAnyCpuAssemblyResolver();
-
-            var cachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache");
 #endif
             var settings = new CefSettings()
             {
