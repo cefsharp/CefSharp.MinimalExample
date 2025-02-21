@@ -12,11 +12,13 @@ namespace CefSharp.MinimalExample.Wpf
 #if ANYCPU
             //Only required for PlatformTarget of AnyCPU
             CefRuntime.SubscribeAnyCpuAssemblyResolver();
+
+            var cachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache");
 #endif
             var settings = new CefSettings()
             {
                 //By default CefSharp will use an in-memory cache, you need to specify a Cache Folder to persist data
-                CachePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache")
+                CachePath = cachePath
             };
 
             //Example of setting a command line argument
@@ -41,7 +43,16 @@ namespace CefSharp.MinimalExample.Wpf
 
                 if(!initialized)
                 {
-                    MessageBox.Show("Cef.Initialized failed, check the log file for more details.");
+                    var exitCode = Cef.GetExitCode();
+
+                    if (exitCode == Enums.ResultCode.NormalExitProcessNotified)
+                    {
+                        MessageBox.Show($"Cef.Initialize failed with {exitCode}, another process is already using cache path {cachePath}");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Cef.Initialize failed with {exitCode}, check the log file for more details.");
+                    }
 
                     Shutdown();
                 }

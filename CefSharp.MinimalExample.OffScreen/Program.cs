@@ -58,7 +58,9 @@ namespace CefSharp.MinimalExample.OffScreen
 
                 if (!success)
                 {
-                    throw new Exception("Unable to initialize CEF, check the log file.");
+                    var exitCode = Cef.GetExitCode();
+
+                    throw new Exception($"Cef.Initialize failed with {exitCode}, check the log file for more details.");
                 }
 
                 // Create the CefSharp.OffScreen.ChromiumWebBrowser instance
