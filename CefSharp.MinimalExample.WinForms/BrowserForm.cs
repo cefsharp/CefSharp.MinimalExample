@@ -220,6 +220,11 @@ namespace CefSharp.MinimalExample.WinForms
                 {
                     browser.LoadUrl(urlString);
 
+                    if (browser.CanSelect)
+                    {
+                        browser.Select();
+                    }
+
                     return;
                 }
 
@@ -231,6 +236,11 @@ namespace CefSharp.MinimalExample.WinForms
                         if (hostEntry.AddressList.Length > 0)
                         {
                             browser.LoadUrl(urlString);
+
+                            if (browser.CanSelect)
+                            {
+                                browser.Select();
+                            }
 
                             return;
                         }
@@ -246,6 +256,11 @@ namespace CefSharp.MinimalExample.WinForms
             var searchUrl = "https://www.google.com/search?q=" + Uri.EscapeDataString(urlString);
 
             browser.LoadUrl(searchUrl);
+
+            if (browser.CanSelect)
+            {
+                browser.Select();
+            }
         }
 
         private void ShowDevToolsMenuItemClick(object sender, EventArgs e)
