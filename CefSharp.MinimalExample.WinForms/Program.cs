@@ -39,6 +39,9 @@ namespace CefSharp.MinimalExample.WinForms
             //For screen sharing add (see https://bitbucket.org/chromiumembedded/cef/issues/2582/allow-run-time-handling-of-media-access#comment-58677180)
             settings.CefCommandLineArgs.Add("enable-usermedia-screen-capturing");
 
+            settings.CefCommandLineArgs.Add("disable-features", "OptimizationGuideOnDeviceModel");
+            //--
+
             //Perform dependency check to make sure all relevant resources are in our output directory.
             var initialized = Cef.Initialize(settings, performDependencyCheck: true, browserProcessHandler: null);
 
