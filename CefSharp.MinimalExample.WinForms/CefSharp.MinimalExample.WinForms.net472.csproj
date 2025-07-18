@@ -19,6 +19,7 @@
     <Platforms>x86;x64;AnyCPU</Platforms>
     <ProjectGuid>{1D1D63D1-5257-4AA0-A284-7EF4574878CB}</ProjectGuid>
     <StartupObject>CefSharp.MinimalExample.WinForms.Program</StartupObject>
+    <ApplicationIcon>chromium-256.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Platform)' == 'AnyCPU'">
@@ -50,6 +51,10 @@
 
   <ItemGroup>
     <None Remove="packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="chromium-256.ico" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,6 +18,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64;AnyCPU</Platforms>
     <StartupObject>CefSharp.MinimalExample.Wpf.App</StartupObject>
+    <ApplicationIcon>chromium-256.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Platform)' == 'AnyCPU'">
@@ -49,6 +50,10 @@
 
   <ItemGroup>
     <None Remove="packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="chromium-256.ico" />
   </ItemGroup>
 
   <ItemGroup>
