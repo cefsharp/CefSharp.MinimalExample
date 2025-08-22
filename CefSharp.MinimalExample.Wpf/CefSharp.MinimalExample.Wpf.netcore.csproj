@@ -11,9 +11,7 @@
   
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net6.0-windows</TargetFrameworks>
-    <TargetFrameworks Condition="'$(NETCoreAppMaximumVersion)'=='7.0'">$(TargetFrameworks);net7.0-windows</TargetFrameworks>
-    <TargetFrameworks Condition="'$(NETCoreAppMaximumVersion)'=='8.0'">$(TargetFrameworks);net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <RootNamespace>CefSharp.MinimalExample.Wpf</RootNamespace>
     <ApplicationIcon>chromium-256.ico</ApplicationIcon>
